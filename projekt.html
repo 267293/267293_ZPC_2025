@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individuální projekt - Moje portfolio ZPC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with title and dark mode toggle -->
+        <header>
+            <h1>Individuální projekt</h1>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- Navigation back -->
+        <nav class="breadcrumb">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Zpět na hlavní stránku
+            </a>
+        </nav>
+
+        <!-- Main content -->
+        <main class="page-content">
+            <div class="content-section">
+                <h2>Popis projektu</h2>
+                <p>
+                    Téma mého individuálního projektu je Desinfekční box na elektrinická zařízení. Mobily, hodinky, sluchátka jsou elektronická zařízení, která používáme skoro neustále. Patří k našemu každodennímu životu a máme je neustále v ruce, a proto je důležité si uvědomit, že největšími nosiči bakterii jsou právě tato zařízení. A k tomu slouží toto zařízení, do boxu vložíte zařízení a pomocí desinfekčního cyklu dojde ke zničení bakterii a všech nečistot na površích zařízení. 
+            </div>
+
+            <div class="content-section">
+                <h2>Plánované technologie</h2>
+                <ul class="tech-list">
+                    <li>3D modelování a tisk</li>
+                    <li>Laserové řezání</li>
+                    
+                    <li>Programování mikrokontrolérů</li>
+                    <li>Senzory a aktuátory</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Časový plán</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Týden 1-2: Návrh a plánování</h3>
+                        <p>Definice problému, výzkum, první návrhy</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Týden 3-4: Prototypování</h3>
+                        <p>První prototypy, testování konceptu</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Týden 5-6: Výroba</h3>
+                        <p>Finální výroba všech komponent</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Týden 7-8: Testování a dokončení</h3>
+                        <p>Finální testování, dokumentace</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Průběh práce</h2>
+                <p>
+                    Tuto sekci budu průběžně aktualizovat s fotografiami, 
+                    popisem postupu a výsledky jednotlivých fází projektu.
+                </p>
+                
+                <div class="project-gallery">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Fotografie budou přidány během práce na projektu</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.querySelector('.dark-mode-toggle i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+    </script>
+</body>
+</html>

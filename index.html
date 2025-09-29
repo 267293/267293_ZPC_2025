@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moje portfolio ZPC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with title and dark mode toggle -->
+        <header>
+            <h1>Moje portfolio ZPC</h1>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- Social icons -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/dan_belohoubek/" class="social-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/dan.belohoubek/?locale=cs_CZ" class="social-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/dan-belohoubek/" class="social-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+
+        <!-- Main content -->
+        <main>
+            <p class="intro-text">
+                Vítám Vás na mé stránce, která slouží jako portfolio mé práce v 
+                předmětu "Jak vyrobit (téměř) cokoli". Budu sem postupně 
+                přidávat příspěvky o průběhu mých prací, ať už dílčích úloh v 
+                průběhu semestru nebo individuálního projektu.
+            </p>
+
+            <!-- Navigation sections -->
+            <nav class="nav-sections">
+                <a href="o-mne.html" class="nav-item">
+                    <h2>O mně</h2>
+                </a>
+                
+                <a href="projekt.html" class="nav-item">
+                    <h2>Individuální projekt</h2>
+                </a>
+            </nav>
+        </main>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.querySelector('.dark-mode-toggle i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+    </script>
+</body>
+</html>

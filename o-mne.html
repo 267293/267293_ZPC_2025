@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O mně - Moje portfolio ZPC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with title and dark mode toggle -->
+        <header>
+            <h1>O mně</h1>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- Navigation back -->
+        <nav class="breadcrumb">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Zpět na hlavní stránku
+            </a>
+        </nav>
+
+        <!-- Main content -->
+        <main class="page-content">
+            <div class="content-section">
+                <h2>Základní informace</h2>
+                <p>
+                    Jmenuji se Bělohoubek Dan a jsem studentem bakalářského programu  konstrukční inženýrství. Tato stránka bude sloužit k prezentaci mé práce v předemětu "Jak vyrobit téměř cokoli" 
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h2>Moje zájmy</h2>
+                <ul class="interests-list">
+                    <li>Kontruování</li>
+                    <li>3D modelování a tisk</li>
+                    <li>Biomechanika</li>
+                    <li>Inovativní technologie</li>
+                </ul>
+            </div>
+
+           
+
+            <div class="content-section">
+                <h2>Dosavadní zkušenosti</h2>
+                <p>
+                   Mám mnoho zkušeností s konstruováním ať už součástí nebo celků. Již na střední škole jsem byl velmi aktivním studentem, několikrát jsem se zúčastnil Středoškolské odborné činnosti, kdy jsem se s projektem dostal do celostátního kola. 
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.querySelector('.dark-mode-toggle i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+    </script>
+</body>
+</html>
