@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini projekty - Moje portfolio ZPC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with title and dark mode toggle -->
+        <header>
+            <h1>Mini projekty</h1>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- Navigation back -->
+        <nav class="breadcrumb">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Zpět na hlavní stránku
+            </a>
+        </nav>
+
+        <!-- Main content -->
+        <main class="page-content">
+            <div class="content-section">
+                <h2>Přehled mini projektů</h2>
+                <p>
+                    Zde najdete všechny dílčí projekty a úkoly, které jsem vypracoval 
+                    v rámci předmětu "Jak vyrobit (téměř) cokoli". Každý projekt 
+                    dokumentuje konkrétní techniku nebo nástroj digitální výroby.
+                </p>
+            </div>
+
+            <!-- Mini projects grid -->
+            <div class="mini-projects-grid">
+                
+                <!-- Projekt 1 - Příklad -->
+                <div class="mini-project-card">
+                    <div class="project-image-placeholder">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>3D modelování</h3>
+                        <p>První kroky v 3D modelování a příprava na 3D tisk.</p>
+                        <span class="project-date">Týden 1</span>
+                    </div>
+                    <a href="#" class="project-link">Zobrazit detail</a>
+                </div>
+
+                <!-- Projekt 2 - Příklad -->
+                <div class="mini-project-card">
+                    <div class="project-image-placeholder">
+                        <i class="fas fa-laser"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Laserové řezání</h3>
+                        <p>Návrh a výroba komponent pomocí laserového řezání.</p>
+                        <span class="project-date">Týden 2</span>
+                    </div>
+                    <a href="#" class="project-link">Zobrazit detail</a>
+                </div>
+
+                <!-- Projekt 3 - Příklad -->
+                <div class="mini-project-card">
+                    <div class="project-image-placeholder">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Elektronika</h3>
+                        <p>Základy elektroniky a práce s mikrokontroléry.</p>
+                        <span class="project-date">Týden 3</span>
+                    </div>
+                    <a href="#" class="project-link">Zobrazit detail</a>
+                </div>
+
+                <!-- Placeholder pro nové projekty -->
+                <div class="mini-project-card add-project">
+                    <div class="project-image-placeholder">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Nový projekt</h3>
+                        <p>Zde bude přidán další mini projekt...</p>
+                        <span class="project-date">Brzy</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Instructions section -->
+            <div class="content-section">
+                <h2>Jak projekty fungují</h2>
+                <ul class="features-list">
+                    <li><strong>Dokumentace procesu</strong> - Každý projekt obsahuje detailní popis postupu</li>
+                    <li><strong>Fotografie a video</strong> - Vizuální dokumentace všech kroků</li>
+                    <li><strong>Soubory ke stažení</strong> - 3D modely, kódy, schémata</li>
+                    <li><strong>Lekce a poznatky</strong> - Co jsem se naučil a doporučení</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.querySelector('.dark-mode-toggle i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+    </script>
+</body>
+</html>
