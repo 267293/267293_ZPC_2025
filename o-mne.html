@@ -8,6 +8,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Hover trigger for navbar -->
+    <div class="navbar-trigger"></div>
+    
+    <!-- Top navigation bar -->
+    <nav class="top-navbar">
+        <div class="navbar-container">
+            <div class="navbar-menu">
+                <div class="navbar-item dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Projekty <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="projekt.html" class="dropdown-item">
+                            <i class="fas fa-flask"></i>
+                            Individuální projekt
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="mini-projekty/plotter.html" class="dropdown-item">
+                            <i class="fas fa-cut"></i>
+                            Práce na plotteru
+                        </a>
+                    </div>
+                </div>
+                <a href="o-mne.html" class="navbar-item active">O mně</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <!-- Header with title and dark mode toggle -->
         <header>
@@ -30,7 +58,8 @@
             <div class="content-section">
                 <h2>Základní informace</h2>
                 <p>
-                    Jmenuji se Bělohoubek Dan a jsem studentem bakalářského programu  konstrukční inženýrství. Tato stránka bude sloužit k prezentaci mé práce v předemětu "Jak vyrobit téměř cokoli" 
+                    Jmenuji se Bělohoubek Dan a jsem studentem bakalářského programu  konstrukční inženýrství. Chtěl bych být dalším členem v rodinné tradici strojařů. Baví mě vytvářet nové věci a inovovat ty staré. Rád se učím novým věcem. Volnočasové aktivity mě naplňují a unáší z reality dnešního světa. Učím  jezdit děti na trailech a závodím v downhillu, také mě naplňuje lezení, ať už ve skalách nebo v hale. 
+
                 </p>
             </div>
 
@@ -49,7 +78,7 @@
             <div class="content-section">
                 <h2>Dosavadní zkušenosti</h2>
                 <p>
-                   Mám mnoho zkušeností s konstruováním ať už součástí nebo celků. Již na střední škole jsem byl velmi aktivním studentem, několikrát jsem se zúčastnil Středoškolské odborné činnosti, kdy jsem se s projektem dostal do celostátního kola. 
+                   Mám řekl bych mnoho zkušeností, na studenta druhého ročníku, s konstruováním a proto jsem rád, že mohu rozvíjet nové vědomosti v programování. Jelikož jsem nastoupil na fakultu strojní, tak jsem velmi zapálen do hobby programování. Tato stránka je momentálně pátá verze, takže mi tato session velmi pomohla k pochopení vytváření webových stránek.  
                 </p>
             </div>
         </main>
@@ -65,6 +94,21 @@
                 icon.className = 'fas fa-moon';
             }
         }
+
+        // Mobile dropdown toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            
+            if (dropdownToggle) {
+                dropdownToggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>

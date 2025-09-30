@@ -1,0 +1,2 @@
+# Placeholder pro obrázek plotter projektu
+# Tento soubor lze nahradit skutečným obrázkem plotter-projekt.jpg

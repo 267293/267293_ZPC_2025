@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práce na plotteru - Mini projekt</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Hover trigger for navbar -->
+    <div class="navbar-trigger"></div>
+    
+    <!-- Top navigation bar -->
+    <nav class="top-navbar">
+        <div class="navbar-container">
+            <div class="navbar-menu">
+                <div class="navbar-item dropdown active">
+                    <a href="#" class="dropdown-toggle">
+                        Projekty <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="../projekt.html" class="dropdown-item">
+                            <i class="fas fa-flask"></i>
+                            Individuální projekt
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="plotter.html" class="dropdown-item active">
+                            <i class="fas fa-cut"></i>
+                            Práce na plotteru
+                        </a>
+                    </div>
+                </div>
+                <a href="../o-mne.html" class="navbar-item">O mně</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header with title and dark mode toggle -->
+        <header>
+            <h1>Práce na plotteru</h1>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- Navigation back -->
+        <nav class="breadcrumb">
+            <a href="../mini-projekty.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Zpět na Mini projekty
+            </a>
+        </nav>
+
+        <!-- Main content -->
+        <main class="page-content">
+            <!-- Project overview -->
+            <div class="project-header">
+                <div class="project-meta">
+                    
+                    <span class="project-category"><i class="fas fa-tag"></i> Řezání a kreslení</span>
+                   
+                </div>
+            </div>
+
+            <!-- Project description with image -->
+            <div class="content-section text-image-layout">
+                <div class="text-content">
+                    <h2>Popis projektu</h2>
+                    <p>
+                        Úvod do práce s plotterem - nástroj pro přesné kreslení a řezání různých materiálů. 
+                        V tomto projektu jsem se naučil základní principy práce s plotterem, od návrhu 
+                        v software až po finální řezání materiálu.
+                    </p>
+                    <p>
+                        Plotter je zařízení, které dokáže velmi přesně řídit pohyb nástroje (nože nebo pera) 
+                        ve dvou osách. Je ideální pro vytváření samolepek, šablon, nebo přesných výkresů.
+                    </p>
+                </div>
+                <div class="image-content">
+                    <img src="../images/pllotter.jpg" alt="Práce na plotteru - výsledek" class="project-image">
+                    <p class="image-caption">Finální výsledek práce na plotteru</p>
+                </div>
+            </div>
+
+            <!-- What I learned -->
+            <div class="content-section">
+                <h2>Co jsem se naučil</h2>
+                <ul class="learning-list">
+                    <li><strong>Software pro návrh</strong> - Práce s vektorovými návrhy pro plotter</li>
+                    <li><strong>Nastavení parametrů</strong> - Rychlost, tlak a hloubka řezu</li>
+                    <li><strong>Výběr materiálů</strong> - Jaké materiály jsou vhodné pro plotter</li>
+                    <li><strong>Kalibrace zařízení</strong> - Jak správně nastavit plotter před prací</li>
+                    <li><strong>Troubleshooting</strong> - Řešení běžných problémů při řezání</li>
+                </ul>
+            </div>
+
+            <!-- Process steps -->
+            <div class="content-section">
+                <h2>Průběh práce</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Návrh v software</h3>
+                            <p>Vytvoření vektorového návrhu v programu pro plotter. Důležité je použít správné rozměry a linie.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Příprava materiálu</h3>
+                            <p>Výběr vhodného materiálu a jeho správné umístění na pracovní plochu plotteru.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Nastavení parametrů</h3>
+                            <p>Kalibrace plotteru, nastavení rychlosti, tlaku a typu nástroje podle materiálu.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Řezání</h3>
+                            <p>Spuštění procesu řezání a monitoring průběhu práce. Kontrola kvality během procesu.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Dokončení</h3>
+                            <p>Odstranění materiálu, čištění zbytků a kontrola finálního výsledku.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!-- Results and files -->
+            <div class="content-section">
+                <h2>Výsledky a soubory</h2>
+                <p>Projekt byl úspěšně dokončen s následujícími výsledky:</p>
+                
+                <div class="results-grid">
+                    <div class="result-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Přesný řez podle návrhu</span>
+                    </div>
+                    <div class="result-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Bez poškození materiálu</span>
+                    </div>
+                    <div class="result-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Čisté hrany řezu</span>
+                    </div>
+                    <div class="result-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Funkční finální produkt</span>
+                    </div>
+                </div>
+
+                
+
+            
+          
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.querySelector('.dark-mode-toggle i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        // Mobile dropdown toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            
+            if (dropdownToggle) {
+                dropdownToggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
