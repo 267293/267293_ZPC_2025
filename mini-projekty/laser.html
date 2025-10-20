@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laserové řezání - Mini projekt</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Hover trigger for navbar -->
+    <div class="navbar-trigger"></div>
+    
+    <!-- Top navigation bar -->
+    <nav class="top-navbar">
+        <div class="navbar-container">
+            <div class="navbar-menu">
+                <div class="navbar-item dropdown active">
+                    <a href="#" class="dropdown-toggle">
+                        Projekty <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="../projekt.html" class="dropdown-item">
+                            <i class="fas fa-flask"></i>
+                            Individuální projekt
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="plotter.html" class="dropdown-item">
+                            <i class="fas fa-cut"></i>
+                            Práce na plotteru
+                        </a>
+                        <a href="laser.html" class="dropdown-item active">
+                            <i class="fas fa-laser-pointer"></i>
+                            Laserové řezání
+                        </a>
+                    </div>
+                </div>
+                <a href="../o-mne.html" class="navbar-item">O mně</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header with title and dark mode toggle -->
+        <header>
+            <h1>Laserové řezání</h1>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- Navigation back -->
+        <nav class="breadcrumb">
+            <a href="../mini-projekty.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Zpět na mini projekty
+            </a>
+        </nav>
+
+        <!-- Main content -->
+        <main class="page-content">
+            
+            <!-- Project hero section with image and description -->
+            <div class="project-hero">
+                <div class="project-hero-content">
+                    <div class="project-image-section">
+                        <div class="main-project-image">
+                            <img src="../images/laser-projekt.jpg" alt="Výsledek laserového řezání" id="main-image">
+                            <div class="image-placeholder" style="display: none;">
+                                <i class="fas fa-laser-pointer"></i>
+                                <p>Zde bude hlavní obrázek projektu</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-description-section">
+                        <div class="project-summary">
+                            <h2>O projektu</h2>
+                            <p>
+                                V tomto mini projektu jsem se seznámil s technologií laserového řezání. 
+                                Naučil jsem se pracovat s vektorovou grafikou, připravovat soubory pro řezání 
+                                a vytvořil jsem vlastní designové komponenty.
+                            </p>
+                            <p>
+                                Projekt zahrnoval návrh v CAD softwaru, přípravu řezných cest a následnou 
+                                výrobu na laserovém řezacím stroji. Výsledkem jsou přesné a kvalitní díly 
+                                s hladkými řeznými hranami.
+                            </p>
+                        </div>
+                        
+                        <div class="project-specs">
+                            <h3>Technické specifikace</h3>
+                            <ul>
+                                <li><strong>Materiál:</strong> Překližka 3mm / Akryl</li>
+                                <li><strong>Software:</strong> Fusion 360 / Inkscape</li>
+                                <li><strong>Stroj:</strong> CO2 laser řezačka</li>
+                                <li><strong>Rozměry:</strong> 100x80mm</li>
+                                <li><strong>Čas výroby:</strong> 15 minut</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project process timeline -->
+            <div class="content-section">
+                <h2>Postup práce</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h3>Návrh a design</h3>
+                            <p>Vytvoření vektorového návrhu v CAD softwaru s ohledem na možnosti laserového řezání.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h3>Příprava souborů</h3>
+                            <p>Export do formátu DXF/SVG a nastavení parametrů řezání pro zvolený materiál.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h3>Laserové řezání</h3>
+                            <p>Nastavení stroje, kalibrace a vlastní proces řezání s kontrolou kvality.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h3>Dokončení</h3>
+                            <p>Čištění dílů, kontrola rozměrů a případná povrchová úprava.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project gallery -->
+            <div class="content-section">
+                <h2>Galerie</h2>
+                <div class="project-gallery">
+                    <div class="gallery-item">
+                        <img src="../images/laser-design.jpg" alt="Návrh v CAD software" onclick="changeMainImage(this.src, this.alt)">
+                        <p>Návrh v CAD software</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="../images/laser-cutting.jpg" alt="Proces řezání" onclick="changeMainImage(this.src, this.alt)">
+                        <p>Proces řezání</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="../images/laser-result.jpg" alt="Výsledné díly" onclick="changeMainImage(this.src, this.alt)">
+                        <p>Výsledné díly</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="../images/laser-detail.jpg" alt="Detail řezné hrany" onclick="changeMainImage(this.src, this.alt)">
+                        <p>Detail řezné hrany</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lessons learned -->
+            <div class="content-section">
+                <h2>Co jsem se naučil</h2>
+                <div class="lessons-grid">
+                    <div class="lesson-item">
+                        <i class="fas fa-vector-square"></i>
+                        <h3>Vektorová grafika</h3>
+                        <p>Práce s vektorovými formáty a příprava souborů pro výrobu.</p>
+                    </div>
+                    <div class="lesson-item">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Parametry řezání</h3>
+                        <p>Nastavení rychlosti, výkonu a počtu průchodů pro různé materiály.</p>
+                    </div>
+                    <div class="lesson-item">
+                        <i class="fas fa-drafting-compass"></i>
+                        <h3>Přesnost výroby</h3>
+                        <p>Význam tolerance a přesnosti při návrhu pro digitální výrobu.</p>
+                    </div>
+                    <div class="lesson-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Bezpečnost</h3>
+                        <p>Pravidla bezpečnosti při práci s laserovým řezacím strojem.</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.querySelector('.dark-mode-toggle i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        function changeMainImage(src, alt) {
+            const mainImage = document.getElementById('main-image');
+            const placeholder = document.querySelector('.image-placeholder');
+            
+            // Try to load the image
+            const img = new Image();
+            img.onload = function() {
+                mainImage.src = src;
+                mainImage.alt = alt;
+                mainImage.style.display = 'block';
+                placeholder.style.display = 'none';
+            };
+            img.onerror = function() {
+                mainImage.style.display = 'none';
+                placeholder.style.display = 'flex';
+            };
+            img.src = src;
+        }
+
+        // Check if main image exists on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainImage = document.getElementById('main-image');
+            const placeholder = document.querySelector('.image-placeholder');
+            
+            if (mainImage) {
+                const img = new Image();
+                img.onload = function() {
+                    mainImage.style.display = 'block';
+                    placeholder.style.display = 'none';
+                };
+                img.onerror = function() {
+                    mainImage.style.display = 'none';
+                    placeholder.style.display = 'flex';
+                };
+                img.src = mainImage.src;
+            }
+        });
+
+        // Mobile dropdown toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            
+            if (dropdownToggle) {
+                dropdownToggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
