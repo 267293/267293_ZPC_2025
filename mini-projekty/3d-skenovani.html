@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Práce na plotteru - Mini projekt</title>
+    <title>3D skenování - Mini projekt</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -25,7 +25,7 @@
                             Individuální projekt
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="plotter.html" class="dropdown-item active">
+                        <a href="plotter.html" class="dropdown-item">
                             <i class="fas fa-cut"></i>
                             Práce na plotteru
                         </a>
@@ -37,7 +37,7 @@
                             <i class="fas fa-cube"></i>
                             3D tisk
                         </a>
-                        <a href="3d-skenovani.html" class="dropdown-item">
+                        <a href="3d-skenovani.html" class="dropdown-item active">
                             <i class="fas fa-search"></i>
                             3D skenování
                         </a>
@@ -51,7 +51,7 @@
     <div class="container">
         <!-- Header with title and dark mode toggle -->
         <header>
-            <h1>Práce na plotteru</h1>
+            <h1>3D skenování</h1>
             <button class="dark-mode-toggle" onclick="toggleDarkMode()">
                 <i class="fas fa-moon"></i>
             </button>
@@ -70,9 +70,7 @@
             <!-- Project overview -->
             <div class="project-header">
                 <div class="project-meta">
-                    
-                    <span class="project-category"><i class="fas fa-tag"></i> Řezání a kreslení</span>
-                   
+                    <span class="project-category"><i class="fas fa-tag"></i> 3D digitalizace</span>
                 </div>
             </div>
 
@@ -81,18 +79,19 @@
                 <div class="text-content">
                     <h2>Popis projektu</h2>
                     <p>
-                        Úvod do práce s plotterem - nástroj pro přesné kreslení a řezání různých materiálů. 
-                        V tomto projektu jsem se naučil základní principy práce s plotterem, od návrhu 
-                        v software až po finální řezání materiálu.
+                        V tomto mini projektu jsem se seznámil s technologií 3D skenování. 
+                        Naučil jsem se zachytávat geometrii reálných objektů a převádět 
+                        je do digitální podoby pro další zpracování.
                     </p>
                     <p>
-                        Plotter je zařízení, které dokáže velmi přesně řídit pohyb nástroje (nože nebo pera) 
-                        ve dvou osách. Je ideální pro vytváření samolepek, šablon, nebo přesných výkresů.
+                        3D skenování umožňuje rychlou digitalizaci existujících objektů, 
+                        které pak můžeme upravovat, analyzovat nebo reprodukovat. Je 
+                        neocenitelné pro reverse engineering a dokumentaci.
                     </p>
                 </div>
                 <div class="image-content">
-                    <img src="../images/pllotter.jpg" alt="Práce na plotteru - výsledek" class="project-image">
-                    <p class="image-caption">Finální výsledek práce na plotteru</p>
+                    <img src="../images/3d-skenovani-projekt.jpg" alt="Výsledek 3D skenování" class="project-image">
+                    <p class="image-caption">Naskenovaný 3D model</p>
                 </div>
             </div>
 
@@ -100,11 +99,11 @@
             <div class="content-section">
                 <h2>Co jsem se naučil</h2>
                 <ul class="learning-list">
-                    <li><strong>Software pro návrh</strong> - Práce s vektorovými návrhy pro plotter</li>
-                    <li><strong>Nastavení parametrů</strong> - Rychlost, tlak a hloubka řezu</li>
-                    <li><strong>Výběr materiálů</strong> - Jaké materiály jsou vhodné pro plotter</li>
-                    <li><strong>Kalibrace zařízení</strong> - Jak správně nastavit plotter před prací</li>
-                    <li><strong>Troubleshooting</strong> - Řešení běžných problémů při řezání</li>
+                    <li><strong>Typy skenerů</strong> - Rozdíly mezi strukturovaným světlem, laserovým a fotogrammetrií</li>
+                    <li><strong>Příprava objektu</strong> - Správné nastavení osvětlení a pozicování</li>
+                    <li><strong>Skenování</strong> - Technika postupného snímání ze všech úhlů</li>
+                    <li><strong>Post-processing</strong> - Čištění dat, vyplňování děr a optimalizace mesh</li>
+                    <li><strong>Export formátů</strong> - STL, OBJ, PLY a další formáty 3D dat</li>
                 </ul>
             </div>
 
@@ -115,46 +114,68 @@
                     <div class="step">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h3>Návrh v software</h3>
-                            <p>Vytvoření vektorového návrhu v programu pro plotter. Důležité je použít správné rozměry a linie.</p>
+                            <h3>Příprava objektu</h3>
+                            <p>Výběr vhodného objektu a jeho příprava - čištění, matování lesklých povrchů.</p>
                         </div>
                     </div>
                     
                     <div class="step">
                         <div class="step-number">2</div>
                         <div class="step-content">
-                            <h3>Příprava materiálu</h3>
-                            <p>Výběr vhodného materiálu a jeho správné umístění na pracovní plochu plotteru.</p>
+                            <h3>Nastavení skeneru</h3>
+                            <p>Kalibrace 3D skeneru, nastavení rozlišení a kvality skenování.</p>
                         </div>
                     </div>
                     
                     <div class="step">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <h3>Nastavení parametrů</h3>
-                            <p>Kalibrace plotteru, nastavení rychlosti, tlaku a typu nástroje podle materiálu.</p>
+                            <h3>Skenování</h3>
+                            <p>Postupné snímání objektu ze všech úhlů pro kompletní zachycení geometrie.</p>
                         </div>
                     </div>
                     
                     <div class="step">
                         <div class="step-number">4</div>
                         <div class="step-content">
-                            <h3>Řezání</h3>
-                            <p>Spuštění procesu řezání a monitoring průběhu práce. Kontrola kvality během procesu.</p>
+                            <h3>Zpracování dat</h3>
+                            <p>Spojení skenů, čištění dat, vyplnění děr a optimalizace 3D modelu.</p>
                         </div>
                     </div>
                     
                     <div class="step">
                         <div class="step-number">5</div>
                         <div class="step-content">
-                            <h3>Dokončení</h3>
-                            <p>Odstranění materiálu, čištění zbytků a kontrola finálního výsledku.</p>
+                            <h3>Export a využití</h3>
+                            <p>Export do vhodného formátu a příprava pro další použití (tisk, analýza, atd.).</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            
+            <!-- Project gallery -->
+            <div class="content-section">
+                <h2>Galerie projektu</h2>
+                <div class="project-images">
+                    <div class="image-row">
+                        <div class="image-item">
+                            <img src="../images/3d-skenovani-objekt.jpg" alt="Původní objekt před skenováním" class="gallery-image" onclick="openImageModal(this.src, this.alt)">
+                            <p class="image-caption">Původní objekt</p>
+                        </div>
+                        <div class="image-item">
+                            <img src="../images/3d-skenovani-model.jpg" alt="Naskenovaný 3D model" class="gallery-image" onclick="openImageModal(this.src, this.alt)">
+                            <p class="image-caption">Naskenovaný 3D model</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Modal -->
+            <div class="image-modal" id="imageModal" onclick="closeImageModal(event)">
+                <span class="modal-close" onclick="closeImageModal()">&times;</span>
+                <img class="modal-content modal-image" id="modalImage">
+                <div class="modal-caption" id="modalCaption"></div>
+            </div>
 
             <!-- Results and files -->
             <div class="content-section">
@@ -164,26 +185,26 @@
                 <div class="results-grid">
                     <div class="result-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>Přesný řez podle návrhu</span>
+                        <span>Kompletní 3D model objektu</span>
                     </div>
                     <div class="result-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>Bez poškození materiálu</span>
+                        <span>Vysoká přesnost detailů</span>
                     </div>
                     <div class="result-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>Čisté hrany řezu</span>
+                        <span>Čistý mesh bez artefaktů</span>
                     </div>
                     <div class="result-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>Funkční finální produkt</span>
+                        <span>Připraveno pro další použití</span>
                     </div>
                 </div>
+            </div>
 
-                
+        </main>
+    </div>
 
-            
-          
     <script>
         function toggleDarkMode() {
             document.body.classList.toggle('light-mode');
@@ -194,6 +215,38 @@
                 icon.className = 'fas fa-moon';
             }
         }
+
+        // Image Modal Functions
+        function openImageModal(src, alt) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            
+            modal.classList.add('active');
+            modalImage.src = src;
+            modalImage.alt = alt;
+            modalCaption.textContent = alt;
+            
+            // Prevent body scrolling when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal(event) {
+            const modal = document.getElementById('imageModal');
+            
+            // Close only if clicked on backdrop or close button
+            if (event === undefined || event.target === modal || event.target.classList.contains('modal-close')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImageModal();
+            }
+        });
 
         // Mobile dropdown toggle
         document.addEventListener('DOMContentLoaded', function() {

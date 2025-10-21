@@ -33,6 +33,14 @@
                             <i class="fas fa-laser-pointer"></i>
                             Laserové řezání
                         </a>
+                        <a href="3d-tisk.html" class="dropdown-item">
+                            <i class="fas fa-cube"></i>
+                            3D tisk
+                        </a>
+                        <a href="3d-skenovani.html" class="dropdown-item">
+                            <i class="fas fa-search"></i>
+                            3D skenování
+                        </a>
                     </div>
                 </div>
                 <a href="../o-mne.html" class="navbar-item">O mně</a>
@@ -53,87 +61,93 @@
         <nav class="breadcrumb">
             <a href="../mini-projekty.html" class="back-link">
                 <i class="fas fa-arrow-left"></i>
-                Zpět na mini projekty
+                Zpět na Mini projekty
             </a>
         </nav>
 
         <!-- Main content -->
         <main class="page-content">
-            
-            <!-- Project hero section with image and description -->
-            <div class="project-hero">
-                <div class="project-hero-content">
-                    <div class="project-image-section">
-                        <div class="main-project-image">
-                            <img src="../images/laser-projekt.jpg" alt="Výsledek laserového řezání" id="main-image">
-                            <div class="image-placeholder" style="display: none;">
-                                <i class="fas fa-laser-pointer"></i>
-                                <p>Zde bude hlavní obrázek projektu</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-description-section">
-                        <div class="project-summary">
-                            <h2>O projektu</h2>
-                            <p>
-                                V tomto mini projektu jsem se seznámil s technologií laserového řezání. 
-                                Naučil jsem se pracovat s vektorovou grafikou, připravovat soubory pro řezání 
-                                a vytvořil jsem vlastní designové komponenty.
-                            </p>
-                            <p>
-                                Projekt zahrnoval návrh v CAD softwaru, přípravu řezných cest a následnou 
-                                výrobu na laserovém řezacím stroji. Výsledkem jsou přesné a kvalitní díly 
-                                s hladkými řeznými hranami.
-                            </p>
-                        </div>
-                        
-                        <div class="project-specs">
-                            <h3>Technické specifikace</h3>
-                            <ul>
-                                <li><strong>Materiál:</strong> Překližka 3mm / Akryl</li>
-                                <li><strong>Software:</strong> Fusion 360 / Inkscape</li>
-                                <li><strong>Stroj:</strong> CO2 laser řezačka</li>
-                                <li><strong>Rozměry:</strong> 100x80mm</li>
-                                <li><strong>Čas výroby:</strong> 15 minut</li>
-                            </ul>
-                        </div>
-                    </div>
+            <!-- Project overview -->
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-category"><i class="fas fa-tag"></i> Laserové řezání</span>
                 </div>
             </div>
 
-            <!-- Project process timeline -->
+            <!-- Project description with image -->
+            <div class="content-section text-image-layout">
+                <div class="text-content">
+                    <h2>Popis projektu</h2>
+                    <p>
+                        V tomto mini projektu jsem se seznámil s technologií laserového řezání. 
+                        Naučil jsem se pracovat s vektorovou grafikou, připravovat soubory pro řezání 
+                        a vytvořil jsem vlastní designové komponenty.
+                    </p>
+                    <p>
+                        Laserové řezání umožňuje velmi přesné řezání různých materiálů pomocí 
+                        fokusovaného laserového paprsku. Je ideální pro vytváření složitých tvarů 
+                        s vysokou přesností a kvalitními hranami.
+                    </p>
+                </div>
+                <div class="image-content">
+                    <img src="../images/eiffel.png" alt="Výsledek laserového řezání - Eiffelovka" class="project-image">
+                    <p class="image-caption">Finální výsledek laserového řezání</p>
+                </div>
+            </div>
+
+            <!-- What I learned -->
             <div class="content-section">
-                <h2>Postup práce</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker">1</div>
-                        <div class="timeline-content">
-                            <h3>Návrh a design</h3>
-                            <p>Vytvoření vektorového návrhu v CAD softwaru s ohledem na možnosti laserového řezání.</p>
+                <h2>Co jsem se naučil</h2>
+                <ul class="learning-list">
+                    <li><strong>Software pro návrh</strong> - Práce s vektorovými návrhy v AutoCAD Mechanical</li>
+                    <li><strong>Nastavení parametrů</strong> - Rychlost, výkon a počet průchodů laseru</li>
+                    <li><strong>Výběr materiálů</strong> - Jaké materiály jsou vhodné pro laserové řezání</li>
+                    <li><strong>Kalibrace zařízení</strong> - Jak správně nastavit laser před prací</li>
+                    <li><strong>Bezpečnost</strong> - Pravidla bezpečnosti při práci s laserem</li>
+                </ul>
+            </div>
+
+            <!-- Process steps -->
+            <div class="content-section">
+                <h2>Průběh práce</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Návrh v software</h3>
+                            <p>Vytvoření vektorového návrhu v AutoCAD Mechanical. Důležité je použít správné rozměry a linie.</p>
                         </div>
                     </div>
                     
-                    <div class="timeline-item">
-                        <div class="timeline-marker">2</div>
-                        <div class="timeline-content">
-                            <h3>Příprava souborů</h3>
-                            <p>Export do formátu DXF/SVG a nastavení parametrů řezání pro zvolený materiál.</p>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Příprava materiálu</h3>
+                            <p>Výběr vhodného materiálu (karton 6mm) a jeho správné umístění na pracovní plochu laseru.</p>
                         </div>
                     </div>
                     
-                    <div class="timeline-item">
-                        <div class="timeline-marker">3</div>
-                        <div class="timeline-content">
-                            <h3>Laserové řezání</h3>
-                            <p>Nastavení stroje, kalibrace a vlastní proces řezání s kontrolou kvality.</p>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Nastavení parametrů</h3>
+                            <p>Kalibrace laseru, nastavení rychlosti, výkonu a typu řezu podle materiálu.</p>
                         </div>
                     </div>
                     
-                    <div class="timeline-item">
-                        <div class="timeline-marker">4</div>
-                        <div class="timeline-content">
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Řezání</h3>
+                            <p>Spuštění procesu laserového řezání a monitoring průběhu práce. Kontrola kvality během procesu.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
                             <h3>Dokončení</h3>
-                            <p>Čištění dílů, kontrola rozměrů a případná povrchová úprava.</p>
+                            <p>Odstranění materiálu, čištění zbytků a kontrola finálního výsledku.</p>
                         </div>
                     </div>
                 </div>
@@ -141,50 +155,49 @@
 
             <!-- Project gallery -->
             <div class="content-section">
-                <h2>Galerie</h2>
-                <div class="project-gallery">
-                    <div class="gallery-item">
-                        <img src="../images/laser-design.jpg" alt="Návrh v CAD software" onclick="changeMainImage(this.src, this.alt)">
-                        <p>Návrh v CAD software</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="../images/laser-cutting.jpg" alt="Proces řezání" onclick="changeMainImage(this.src, this.alt)">
-                        <p>Proces řezání</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="../images/laser-result.jpg" alt="Výsledné díly" onclick="changeMainImage(this.src, this.alt)">
-                        <p>Výsledné díly</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="../images/laser-detail.jpg" alt="Detail řezné hrany" onclick="changeMainImage(this.src, this.alt)">
-                        <p>Detail řezné hrany</p>
+                <h2>Galerie projektu</h2>
+                <div class="project-images">
+                    <div class="image-row">
+                        <div class="image-item">
+                            <img src="../images/výřez.png" alt="Návrh před řezáním" class="gallery-image" onclick="openImageModal(this.src, this.alt)">
+                            <p class="image-caption">Návrh v CAD software</p>
+                        </div>
+                        <div class="image-item">
+                            <img src="../images/eiffel.png" alt="Dokončený výsledek" class="gallery-image" onclick="openImageModal(this.src, this.alt)">
+                            <p class="image-caption">Finální výsledek po řezání</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Lessons learned -->
+            <!-- Image Modal -->
+            <div class="image-modal" id="imageModal" onclick="closeImageModal(event)">
+                <span class="modal-close" onclick="closeImageModal()">&times;</span>
+                <img class="modal-content modal-image" id="modalImage">
+                <div class="modal-caption" id="modalCaption"></div>
+            </div>
+
+            <!-- Results and files -->
             <div class="content-section">
-                <h2>Co jsem se naučil</h2>
-                <div class="lessons-grid">
-                    <div class="lesson-item">
-                        <i class="fas fa-vector-square"></i>
-                        <h3>Vektorová grafika</h3>
-                        <p>Práce s vektorovými formáty a příprava souborů pro výrobu.</p>
+                <h2>Výsledky a soubory</h2>
+                <p>Projekt byl úspěšně dokončen s následujícími výsledky:</p>
+                
+                <div class="results-grid">
+                    <div class="result-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Přesný řez podle návrhu</span>
                     </div>
-                    <div class="lesson-item">
-                        <i class="fas fa-cogs"></i>
-                        <h3>Parametry řezání</h3>
-                        <p>Nastavení rychlosti, výkonu a počtu průchodů pro různé materiály.</p>
+                    <div class="result-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Bez poškození materiálu</span>
                     </div>
-                    <div class="lesson-item">
-                        <i class="fas fa-drafting-compass"></i>
-                        <h3>Přesnost výroby</h3>
-                        <p>Význam tolerance a přesnosti při návrhu pro digitální výrobu.</p>
+                    <div class="result-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Čisté hrany řezu</span>
                     </div>
-                    <div class="lesson-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>Bezpečnost</h3>
-                        <p>Pravidla bezpečnosti při práci s laserovým řezacím strojem.</p>
+                    <div class="result-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Funkční finální produkt</span>
                     </div>
                 </div>
             </div>
@@ -203,41 +216,35 @@
             }
         }
 
-        function changeMainImage(src, alt) {
-            const mainImage = document.getElementById('main-image');
-            const placeholder = document.querySelector('.image-placeholder');
+        // Image Modal Functions
+        function openImageModal(src, alt) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
             
-            // Try to load the image
-            const img = new Image();
-            img.onload = function() {
-                mainImage.src = src;
-                mainImage.alt = alt;
-                mainImage.style.display = 'block';
-                placeholder.style.display = 'none';
-            };
-            img.onerror = function() {
-                mainImage.style.display = 'none';
-                placeholder.style.display = 'flex';
-            };
-            img.src = src;
+            modal.classList.add('active');
+            modalImage.src = src;
+            modalImage.alt = alt;
+            modalCaption.textContent = alt;
+            
+            // Prevent body scrolling when modal is open
+            document.body.style.overflow = 'hidden';
         }
 
-        // Check if main image exists on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const mainImage = document.getElementById('main-image');
-            const placeholder = document.querySelector('.image-placeholder');
+        function closeImageModal(event) {
+            const modal = document.getElementById('imageModal');
             
-            if (mainImage) {
-                const img = new Image();
-                img.onload = function() {
-                    mainImage.style.display = 'block';
-                    placeholder.style.display = 'none';
-                };
-                img.onerror = function() {
-                    mainImage.style.display = 'none';
-                    placeholder.style.display = 'flex';
-                };
-                img.src = mainImage.src;
+            // Close only if clicked on backdrop or close button
+            if (event === undefined || event.target === modal || event.target.classList.contains('modal-close')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImageModal();
             }
         });
 
