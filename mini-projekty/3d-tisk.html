@@ -163,12 +163,17 @@
                 <div class="project-images">
                     <div class="image-row">
                         <div class="image-item">
-                            <img src="../images/3d-tisk-model.jpg" alt="3D model před tiskem" class="gallery-image" onclick="openImageModal(this.src, this.alt)">
+                            <img src="../images/3d-tisk-model.jpg" alt="3D model před tiskem" class="gallery-image" onclick="openMediaModal(this.src, this.alt, 'image')">
                             <p class="image-caption">3D model v software</p>
                         </div>
                         <div class="image-item">
-                            <img src="../images/3d-tisk-vysledek.jpg" alt="Vytištěný objekt" class="gallery-image" onclick="openImageModal(this.src, this.alt)">
+                            <img src="../images/3d_1.JPEG" alt="Vytištěný objekt" class="gallery-image" onclick="openMediaModal(this.src, this.alt, 'image')">
                             <p class="image-caption">Finální vytištěný objekt</p>
+                        </div>
+                        <div class="image-item">
+                            <!-- Video thumbnail -->
+                            <img src="../images/3d_tisk_video_thumb.png" alt="Proces tisku (video)" class="gallery-image" onclick="openMediaModal(this.dataset.video, this.alt, 'video')" data-video="../images/3d_tisk_demo.mp4">
+                            <p class="image-caption">Proces tisku (video)</p>
                         </div>
                     </div>
                 </div>
@@ -177,7 +182,8 @@
             <!-- Image Modal -->
             <div class="image-modal" id="imageModal" onclick="closeImageModal(event)">
                 <span class="modal-close" onclick="closeImageModal()">&times;</span>
-                <img class="modal-content modal-image" id="modalImage">
+                <img class="modal-content modal-image" id="modalImage" style="display:none;">
+                <video id="modalVideo" class="modal-content modal-video" controls style="display:none; max-width:90%; max-height:80vh;"></video>
                 <div class="modal-caption" id="modalCaption"></div>
             </div>
 
@@ -220,27 +226,46 @@
             }
         }
 
-        // Image Modal Functions
-        function openImageModal(src, alt) {
+        // Media Modal Functions (supports images and video)
+        function openMediaModal(src, alt, type) {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
+            const modalVideo = document.getElementById('modalVideo');
             const modalCaption = document.getElementById('modalCaption');
-            
+
             modal.classList.add('active');
-            modalImage.src = src;
-            modalImage.alt = alt;
-            modalCaption.textContent = alt;
-            
+            modalCaption.textContent = alt || '';
+
+            if (type === 'video') {
+                modalImage.style.display = 'none';
+                modalVideo.style.display = 'block';
+                modalVideo.src = src;
+                modalVideo.play().catch(() => {});
+            } else {
+                modalVideo.pause();
+                modalVideo.style.display = 'none';
+                modalVideo.src = '';
+                modalImage.style.display = 'block';
+                modalImage.src = src;
+                modalImage.alt = alt || '';
+            }
+
             // Prevent body scrolling when modal is open
             document.body.style.overflow = 'hidden';
         }
 
         function closeImageModal(event) {
             const modal = document.getElementById('imageModal');
-            
+            const modalVideo = document.getElementById('modalVideo');
+
             // Close only if clicked on backdrop or close button
             if (event === undefined || event.target === modal || event.target.classList.contains('modal-close')) {
                 modal.classList.remove('active');
+                if (modalVideo) {
+                    modalVideo.pause();
+                    modalVideo.src = '';
+                    modalVideo.style.display = 'none';
+                }
                 document.body.style.overflow = 'auto';
             }
         }
