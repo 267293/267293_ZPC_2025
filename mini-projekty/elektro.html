@@ -83,16 +83,20 @@
                 <div class="text-content">
                     <h2>Popis projektu</h2>
                     <p>
-                        Tento mini projekt se věnoval základům elektroniky: návrhu obvodů, práci s
-                        mikrokontroléry a zapojením základních senzorů a pohonů.
+                        V tomto mini projektu jsem navrhl a zrealizoval funkční obvod založený na
+                        desce Arduino Uno. Postupoval jsem od návrhu schématu přes zapojení na breadboard,
+                        připojení senzorů a aktorů až po napsání sketchu v Arduino IDE a jeho nahrání do
+                        mikrokontroléru. Cílem bylo měřit analogový signál ze senzoru, ovládat LED a řídit
+                        motor pomocí PWM.
                     </p>
                     <p>
-                        Naučil jsem se číst schémata, ladit obvody a vytvářet malé PCB pro jednoduché
-                        projekty. Součástí byla také práce s napájením a bezpečnostními opatřeními.
+                        Při práci jsem se zaměřil na správné napájení, ochranné prvky (rezistory, diody),
+                        a bezpečné propojení mezi Arduinem a externími komponenty. Projekt zahrnoval také
+                        ladění přes sériový monitor a přípravu jednoduchého PCB pro finální verzi.
                     </p>
                 </div>
                 <div class="image-content">
-                    <img src="../images/elektro1.jpg" alt="Ukázka elektroniky" class="project-image">
+                    <img src="tinker.png" alt="Ukázka elektroniky" class="project-image">
                     <p class="image-caption">Ukázka zapojení a prototypu</p>
                 </div>
             </div>
@@ -101,11 +105,12 @@
             <div class="content-section">
                 <h2>Co jsem se naučil</h2>
                 <ul class="learning-list">
-                    <li><strong>Schémata a návrh</strong> - Čtení a tvorba základních schémat</li>
-                    <li><strong>Mikrokontroléry</strong> - Programování jednoduchých úloh (např. Arduino)</li>
-                    <li><strong>PCB</strong> - Návrh a výroba jednoduchých DPS</li>
-                    <li><strong>Senzory a pohony</strong> - Zapojení a testování</li>
-                    <li><strong>Bezpečnost</strong> - Správné napájení a ochrana obvodů</li>
+                    <li><strong>Arduino IDE a programování</strong> - psaní sketchů, použití pinMode, digitalWrite, analogRead a analogWrite (PWM)</li>
+                    <li><strong>Zapojení na breadboardu</strong> - správné propojení, použití rezistorů, pull-up/pull-down a ochranných diod</li>
+                    <li><strong>Analogové a digitální piny</strong> - měření senzoru (ADC) a čtení digitálních vstupů</li>
+                    <li><strong>PWM a řízení pohonů</strong> - řízení rychlosti motorů a serv pomocí PWM signálu</li>
+                    <li><strong>Debugging přes sériový monitor</strong> - ladění hodnot, kontroly stavu a řešení chyb</li>
+                    <li><strong>Bezpečnost a napájení</strong> - rozhodování o zdrojích napětí a ochraně obvodů</li>
                 </ul>
             </div>
 
@@ -157,7 +162,7 @@
                 <div class="project-images">
                     <div class="image-row">
                         <div class="image-item">
-                            <img src="../images/elektro1.jpg" alt="Zapojení na breadboardu" class="gallery-image" onclick="openImageModal(this.src, this.alt)">
+                            <img src="../images/elektro.PNG" alt="Zapojení na breadboardu" class="gallery-image" onclick="openImageModal(this.src, this.alt)">
                             <p class="image-caption">Zapojení na breadboardu</p>
                         </div>
                         <div class="image-item">
