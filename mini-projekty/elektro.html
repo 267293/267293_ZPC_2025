@@ -71,36 +71,28 @@
 
         <!-- Main content -->
         <main class="page-content">
-            <!-- Project gallery (sliding bar) placed at top -->
-            <div class="content-section">
-                <h2>Galerie projektu</h2>
-                <div class="sliding-window" id="projectSlidingWindow">
-                    <!-- nav buttons -->
-                    <button class="slide-nav prev" id="slidePrev" aria-label="Předchozí">‹</button>
-                    <button class="slide-nav next" id="slideNext" aria-label="Další">›</button>
-                    <div class="sliding-track" id="projectSlidingTrack">
-                        <div class="slide">
-                            <img src="../images/tinker.png" alt="Zapojení na breadboardu" onclick="openMediaModal(this.src, this.alt, 'image')">
-                            <p class="image-caption">Zapojení na breadboardu</p>
-                        </div>
-                        <div class="slide">
-                            <img src="../images/elektro.PNG" alt="Zapojení v praxi" onclick="openMediaModal(this.src, this.alt, 'image')">
-                            <p class="image-caption">Osazené PCB</p>
-                        </div>
-                        <!-- video slide (thumbnail + modal video) -->
-                        <div class="slide">
-                            <img src="../images/video_náhled.png" alt="Demo video parkování" data-video="../images/video_parking.mp4" onclick="openMediaModal(this.dataset.video, this.alt, 'video')">
-                            <p class="image-caption">Krátké demo (video)</p>
-                        </div>
+            <!-- Project gallery (sliding bar) placed at top - unboxed (no .content-section wrapper) -->
+            <div class="sliding-window" id="projectSlidingWindow">
+                <!-- nav buttons -->
+                <button class="slide-nav prev" id="slidePrev" aria-label="Předchozí">‹</button>
+                <button class="slide-nav next" id="slideNext" aria-label="Další">›</button>
+                <div class="sliding-track" id="projectSlidingTrack">
+                    <div class="slide">
+                        <img src="../images/tinker.png" alt="Zapojení na breadboardu" onclick="openMediaModal(this.src, this.alt, 'image')">
+                        <p class="image-caption">Zapojení na breadboardu</p>
+                    </div>
+                    <div class="slide">
+                        <img src="../images/elektro.PNG" alt="Zapojení v praxi" onclick="openMediaModal(this.src, this.alt, 'image')">
+                        <p class="image-caption">Osazené PCB</p>
+                    </div>
+                    <!-- video slide (thumbnail + modal video) -->
+                    <div class="slide">
+                        <img src="../images/video_náhled.png" alt="Demo video parkování" data-video="../images/video_parking.mp4" onclick="openMediaModal(this.dataset.video, this.alt, 'video')">
+                        <p class="image-caption">Krátké demo (video)</p>
                     </div>
                 </div>
             </div>
-            <!-- Project overview -->
-            <div class="project-header">
-                <div class="project-meta">
-                    <span class="project-category"><i class="fas fa-tag"></i> Elektronika</span>
-                </div>
-            </div>
+            <!-- Project overview (tag removed) -->
 
             <!-- Project description with image -->
             <div class="content-section text-image-layout">
