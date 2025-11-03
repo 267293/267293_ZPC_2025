@@ -1080,11 +1080,21 @@ body.light-mode .image-content .project-image:hover {
     justify-content: center;
     cursor: pointer;
     z-index: 30;
-    transition: background-color 0.2s ease, transform 0.15s ease;
+    transition: background-color 0.2s ease, transform 0.15s ease, opacity 0.2s ease;
+    opacity: 0; /* start hidden */
+    pointer-events: none; /* don't intercept mouse when hidden */
 }
 .slide-nav:hover { background-color: rgba(0,0,0,0.65); transform: translateY(-50%) scale(1.05); }
 .slide-nav.prev { left: 8px; }
 .slide-nav.next { right: 8px; }
+
+/* show arrows when hovering the sliding window or when an arrow has keyboard focus */
+.sliding-window:hover .slide-nav,
+.slide-nav:focus,
+.slide-nav:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
 
 @media (max-width: 600px) {
     .slide-nav { width: 34px; height: 34px; font-size: 1.1rem; }
