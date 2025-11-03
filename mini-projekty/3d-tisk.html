@@ -71,12 +71,25 @@
 
         <!-- Main content -->
         <main class="page-content">
-            <!-- Project overview -->
-            <div class="project-header">
-                <div class="project-meta">
-                    <span class="project-category"><i class="fas fa-tag"></i> 3D modelování a tisk</span>
+            <!-- Project gallery (moved to top, unboxed) -->
+            <div class="project-images">
+                <div class="image-row">
+                    <div class="image-item">
+                        <img src="../images/tisk_model.png" alt="3D model před tiskem" class="gallery-image" onclick="openMediaModal(this.src, this.alt, 'image')">
+                        <p class="image-caption">3D model v software</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="../images/3d_1.JPEG" alt="Vytištěný objekt" class="gallery-image" onclick="openMediaModal(this.src, this.alt, 'image')">
+                        <p class="image-caption">Finální vytištěný objekt</p>
+                    </div>
+                    <div class="image-item">
+                        <!-- Video thumbnail (uses existing image as poster) -->
+                        <img src="../images/tisk_model.png" alt="Proces tisku (video)" class="gallery-image" onclick="openMediaModal(this.dataset.video, this.alt, 'video')" data-video="../images/video3d_v2.mp4">
+                        <p class="image-caption">Proces tisku (video)</p>
+                    </div>
                 </div>
             </div>
+            <!-- Project overview (tag removed) -->
 
             <!-- Project description with image -->
             <div class="content-section text-image-layout">
@@ -157,27 +170,7 @@
                 </div>
             </div>
 
-            <!-- Project gallery -->
-            <div class="content-section">
-                <h2>Galerie projektu</h2>
-                <div class="project-images">
-                    <div class="image-row">
-                        <div class="image-item">
-                            <img src="../images/tisk_model.png" alt="3D model před tiskem" class="gallery-image" onclick="openMediaModal(this.src, this.alt, 'image')">
-                            <p class="image-caption">3D model v software</p>
-                        </div>
-                        <div class="image-item">
-                            <img src="../images/3d_1.JPEG" alt="Vytištěný objekt" class="gallery-image" onclick="openMediaModal(this.src, this.alt, 'image')">
-                            <p class="image-caption">Finální vytištěný objekt</p>
-                        </div>
-                        <div class="image-item">
-                                <!-- Video thumbnail (uses existing image as poster) -->
-                                <img src="../images/tisk_model.png" alt="Proces tisku (video)" class="gallery-image" onclick="openMediaModal(this.dataset.video, this.alt, 'video')" data-video="../images/video3d_v2.mp4">
-                                <p class="image-caption">Proces tisku (video)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Project gallery moved to top and unboxed (see top of page) -->
 
             <!-- Image Modal -->
             <div class="image-modal" id="imageModal" onclick="closeImageModal(event)">
