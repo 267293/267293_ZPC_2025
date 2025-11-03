@@ -1029,6 +1029,8 @@ body.light-mode .image-content .project-image:hover {
 .sliding-window {
     overflow: hidden;
     width: 100%;
+    max-width: 700px; /* limit to content width so one slide visible */
+    margin: 0 auto;
     border-radius: 8px;
     background-color: rgba(255,255,255,0.02);
     border: 1px solid rgba(255,255,255,0.04);
@@ -1041,13 +1043,14 @@ body.light-mode .image-content .project-image:hover {
     will-change: transform;
 }
 .slide {
-    flex: 0 0 auto;
-    width: 220px;
+    flex: 0 0 100%; /* show one slide at a time */
+    max-width: 700px;
+    margin: 0 auto;
     text-align: center;
 }
 .slide img {
     width: 100%;
-    height: 140px;
+    height: 360px; /* larger preview so only one slide fits */
     object-fit: cover;
     border-radius: 8px;
     display: block;
@@ -1064,9 +1067,13 @@ body.light-mode .image-content .project-image:hover {
     cursor: grab;
 }
 
+@media (max-width: 900px) {
+    .sliding-window { max-width: 92%; }
+}
+
 @media (max-width: 600px) {
-    .slide { width: 160px; }
-    .slide img { height: 110px; }
+    .slide { flex: 0 0 100%; }
+    .slide img { height: 220px; }
 }
 
 .project-meta {
