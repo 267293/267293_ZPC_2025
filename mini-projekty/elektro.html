@@ -98,7 +98,7 @@
                     </p>
                 </div>
                 <div class="image-content">
-                    <img src="tinker.png" alt="Ukázka elektroniky" class="project-image">
+                    <img src="../images/tinker.png" alt="Ukázka elektroniky" class="project-image">
                     <p class="image-caption">Ukázka zapojení v programu Tinkercad</p>
                 </div>
             </div>
@@ -107,7 +107,7 @@
             <div class="content-section">
                 <h2>Co jsem se naučil</h2>
                 <ul class="learning-list">
-                                    <img src="../images/tinker.png" alt="Demo video" class="gallery-image" onclick="openMediaModal(this.dataset.video, this.alt, 'video')" data-video="../images/video_parking.mp4">
+                                    
                     <li><strong>Zapojení na breadboardu</strong> - správné propojení, použití rezistorů, pull-up/pull-down a ochranných diod</li>
                     <li><strong>Analogové a digitální piny</strong> - měření senzoru (ADC) a čtení digitálních vstupů</li>
                    
@@ -208,6 +208,35 @@
             </div>
 
         </main>
+        
+        <!-- Sliding gallery (auto-scrolling) -->
+        <div class="content-section sliding-gallery">
+            <h2>Rychlá galerie</h2>
+            <div class="sliding-window" id="slidingWindow">
+                <div class="sliding-track" id="slidingTrack">
+                    <div class="slide">
+                        <img src="../images/tinker.png" alt="Zapojení - Tinkercad">
+                        <p>Zapojení (Tinkercad)</p>
+                    </div>
+                    <div class="slide">
+                        <img src="../images/elektro.PNG" alt="Osazené PCB">
+                        <p>Osazené PCB</p>
+                    </div>
+                    <div class="slide">
+                        <img src="../images/tisk_model.png" alt="Model">
+                        <p>Model pro tisk</p>
+                    </div>
+                    <div class="slide">
+                        <img src="../images/3d_1.JPEG" alt="Finální výtisk">
+                        <p>Finální výtisk</p>
+                    </div>
+                    <div class="slide">
+                        <img src="../images/eiffel.png" alt="Laserový výřez">
+                        <p>Laserový výřez</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -290,6 +319,44 @@
                 });
             }
         });
+
+        // Sliding gallery auto-scroll
+        (function() {
+            const track = document.getElementById('slidingTrack');
+            const windowEl = document.getElementById('slidingWindow');
+            if (!track || !windowEl) return;
+
+            // duplicate slides to create seamless loop
+            const slides = Array.from(track.children);
+            slides.forEach(s => track.appendChild(s.cloneNode(true)));
+
+            let pos = 0;
+            const speed = 0.5; // px per frame (adjust to taste)
+            let rafId = null;
+            let paused = false;
+
+            function step() {
+                if (!paused) {
+                    pos -= speed;
+                    // when we've scrolled past half the track (original slides), reset
+                    const resetPoint = -(track.scrollWidth / 2);
+                    if (pos <= resetPoint) pos = 0;
+                    track.style.transform = `translateX(${pos}px)`;
+                }
+                rafId = requestAnimationFrame(step);
+            }
+
+            // pause on hover
+            windowEl.addEventListener('mouseenter', () => paused = true);
+            windowEl.addEventListener('mouseleave', () => paused = false);
+
+            // touch to pause on mobile while touching
+            windowEl.addEventListener('touchstart', () => paused = true, {passive:true});
+            windowEl.addEventListener('touchend', () => paused = false);
+
+            // start
+            rafId = requestAnimationFrame(step);
+        })();
     </script>
 </body>
 </html>
