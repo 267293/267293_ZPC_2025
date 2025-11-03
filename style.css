@@ -981,7 +981,7 @@ body.light-mode .features-list li {
 .text-image-layout {
     display: flex;
     gap: 30px;
-    align-items: flex-start;
+    align-items: center; /* vertically center image column next to text */
 }
 
 .text-content {
