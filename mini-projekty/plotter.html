@@ -71,21 +71,7 @@
 
         <!-- Main content -->
         <main class="page-content">
-            <!-- Project gallery (sliding bar, same as elektro) -->
-            <div class="sliding-window" id="projectSlidingWindow">
-                <button class="slide-nav prev" id="slidePrev" aria-label="Předchozí">‹</button>
-                <button class="slide-nav next" id="slideNext" aria-label="Další">›</button>
-                <div class="sliding-track" id="projectSlidingTrack">
-                    <div class="slide">
-                        <img src="../images/pllotter.jpg" alt="Finální výsledek práce na plotteru" onclick="openImageModal(this.src, this.alt)">
-                        <p class="image-caption">Finální výsledek práce na plotteru</p>
-                    </div>
-                    <div class="slide">
-                        <img src="../images/pllotter.jpg" alt="Detail výřezu" onclick="openImageModal(this.src, this.alt)">
-                        <p class="image-caption">Detail výřezu</p>
-                    </div>
-                </div>
-            </div>
+            <!-- (sliding gallery removed per request) -->
             <!-- Project overview (tag removed) -->
 
             <!-- Project description with image -->
@@ -258,94 +244,7 @@
             }
         });
 
-        // Sliding gallery: step-by-step autoplay (same behavior as elektro)
-        (function() {
-            const track = document.getElementById('projectSlidingTrack');
-            const windowEl = document.getElementById('projectSlidingWindow');
-            const prevBtn = document.getElementById('slidePrev');
-            const nextBtn = document.getElementById('slideNext');
-            if (!track || !windowEl) return;
-
-            const originalSlides = Array.from(track.children);
-            const originalCount = originalSlides.length;
-            originalSlides.forEach(s => track.appendChild(s.cloneNode(true)));
-
-            let currentIndex = 0;
-            let autoplayTimer = null;
-            const displayMs = 2500;
-            const transitionMs = 600;
-
-            function getStepWidth() {
-                const first = track.querySelector('.slide');
-                if (!first) return 220;
-                const style = getComputedStyle(track);
-                const gap = parseFloat(style.gap) || parseFloat(style.columnGap) || 18;
-                return first.getBoundingClientRect().width + gap;
-            }
-
-            function goTo(index, animate = true) {
-                const step = getStepWidth();
-                if (animate) track.style.transition = `transform ${transitionMs}ms ease`;
-                else track.style.transition = 'none';
-                track.style.transform = `translateX(${-index * step}px)`;
-            }
-
-            function handleBoundaryForward() {
-                if (currentIndex >= originalCount) {
-                    setTimeout(() => {
-                        currentIndex = 0;
-                        goTo(currentIndex, false);
-                    }, transitionMs + 20);
-                }
-            }
-
-            function next() {
-                currentIndex++;
-                goTo(currentIndex, true);
-                handleBoundaryForward();
-            }
-
-            function prev() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    goTo(currentIndex, true);
-                } else {
-                    goTo(originalCount, false);
-                    setTimeout(() => {
-                        currentIndex = originalCount - 1;
-                        goTo(currentIndex, true);
-                    }, 30);
-                }
-            }
-
-            function startAutoplay() {
-                stopAutoplay();
-                autoplayTimer = setInterval(next, displayMs + transitionMs);
-            }
-
-            function stopAutoplay() {
-                if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
-            }
-
-            windowEl.addEventListener('mouseenter', stopAutoplay);
-            windowEl.addEventListener('mouseleave', startAutoplay);
-            windowEl.addEventListener('touchstart', stopAutoplay, {passive:true});
-            windowEl.addEventListener('touchend', startAutoplay);
-
-            if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoplay(); prev(); startAutoplay(); });
-            if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoplay(); next(); startAutoplay(); });
-
-            windowEl.tabIndex = 0;
-            windowEl.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') { stopAutoplay(); prev(); startAutoplay(); }
-                if (e.key === 'ArrowRight') { stopAutoplay(); next(); startAutoplay(); }
-            });
-
-            window.addEventListener('resize', () => { goTo(currentIndex, false); });
-
-            goTo(0, false);
-            setTimeout(startAutoplay, 300);
-        })();
+        // Sliding gallery removed for this page to keep content static
     </script>
 </body>
 </html>
