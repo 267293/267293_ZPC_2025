@@ -173,6 +173,39 @@
                     </div>
                 </div>
             </div>
+                <!-- Project gallery (sliding bar) -->
+                <div class="content-section">
+                    <h2>Galerie projektu</h2>
+                    <div class="sliding-window" id="projectSlidingWindow">
+                        <div class="sliding-track" id="projectSlidingTrack">
+                            <div class="slide">
+                                <img src="../images/tinker.png" alt="Zapojení na breadboardu" onclick="openMediaModal(this.src, this.alt, 'image')">
+                                <p class="image-caption">Zapojení na breadboardu</p>
+                            </div>
+                            <div class="slide">
+                                <img src="../images/elektro.PNG" alt="Zapojení v praxi" onclick="openMediaModal(this.src, this.alt, 'image')">
+                                <p class="image-caption">Osazené PCB</p>
+                            </div>
+                            <div class="slide">
+                                <img src="../images/tisk_model.png" alt="Model" onclick="openMediaModal(this.src, this.alt, 'image')">
+                                <p class="image-caption">Model pro tisk</p>
+                            </div>
+                            <div class="slide">
+                                <img src="../images/3d_1.JPEG" alt="Finální výtisk" onclick="openMediaModal(this.src, this.alt, 'image')">
+                                <p class="image-caption">Finální výtisk</p>
+                            </div>
+                            <div class="slide">
+                                <img src="../images/eiffel.png" alt="Laserový výřez" onclick="openMediaModal(this.src, this.alt, 'image')">
+                                <p class="image-caption">Laserový výřez</p>
+                            </div>
+                            <!-- video slide -->
+                            <div class="slide">
+                                <img src="../images/tinker.png" alt="Demo video" data-video="../images/video_parking.mp4" onclick="openMediaModal(this.dataset.video, this.alt, 'video')">
+                                <p class="image-caption">Krátké demo (video)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             <!-- Image Modal -->
             <div class="image-modal" id="imageModal" onclick="closeImageModal(event)">
@@ -209,34 +242,7 @@
 
         </main>
         
-        <!-- Sliding gallery (auto-scrolling) -->
-        <div class="content-section sliding-gallery">
-            <h2>Rychlá galerie</h2>
-            <div class="sliding-window" id="slidingWindow">
-                <div class="sliding-track" id="slidingTrack">
-                    <div class="slide">
-                        <img src="../images/tinker.png" alt="Zapojení - Tinkercad">
-                        <p>Zapojení (Tinkercad)</p>
-                    </div>
-                    <div class="slide">
-                        <img src="../images/elektro.PNG" alt="Osazené PCB">
-                        <p>Osazené PCB</p>
-                    </div>
-                    <div class="slide">
-                        <img src="../images/tisk_model.png" alt="Model">
-                        <p>Model pro tisk</p>
-                    </div>
-                    <div class="slide">
-                        <img src="../images/3d_1.JPEG" alt="Finální výtisk">
-                        <p>Finální výtisk</p>
-                    </div>
-                    <div class="slide">
-                        <img src="../images/eiffel.png" alt="Laserový výřez">
-                        <p>Laserový výřez</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- removed duplicate sliding gallery -->
     </div>
 
     <script>
@@ -320,10 +326,10 @@
             }
         });
 
-        // Sliding gallery auto-scroll
+        // Sliding gallery auto-scroll for project gallery
         (function() {
-            const track = document.getElementById('slidingTrack');
-            const windowEl = document.getElementById('slidingWindow');
+            const track = document.getElementById('projectSlidingTrack');
+            const windowEl = document.getElementById('projectSlidingWindow');
             if (!track || !windowEl) return;
 
             // duplicate slides to create seamless loop
@@ -331,16 +337,15 @@
             slides.forEach(s => track.appendChild(s.cloneNode(true)));
 
             let pos = 0;
-            const speed = 0.5; // px per frame (adjust to taste)
+            const speed = 0.6; // px per frame (adjust to taste)
             let rafId = null;
             let paused = false;
 
             function step() {
                 if (!paused) {
                     pos -= speed;
-                    // when we've scrolled past half the track (original slides), reset
-                    const resetPoint = -(track.scrollWidth / 2);
-                    if (pos <= resetPoint) pos = 0;
+                    const halfWidth = track.scrollWidth / 2;
+                    if (Math.abs(pos) >= halfWidth) pos = 0;
                     track.style.transform = `translateX(${pos}px)`;
                 }
                 rafId = requestAnimationFrame(step);
