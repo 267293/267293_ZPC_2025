@@ -152,31 +152,14 @@
                 </div>
             </div>
 
-            <!-- Project gallery -->
-            <div class="content-section">
-                <h2>Galerie projektu</h2>
-                <div class="project-images">
-                    <div class="image-row">
-                        <div class="image-item">
-                            <img src="../images/tinker.png" alt="Zapojení na breadboardu" class="gallery-image" onclick="openMediaModal(this.src, this.alt, 'image')">
-                            <p class="image-caption">Zapojení na breadboardu</p>
-                        </div>
-                        <div class="image-item">
-                            <img src="../images/elektro.PNG" alt="Zapojení v praxi" class="gallery-image" onclick="openMediaModal(this.src, this.alt, 'image')">
-                            <p class="image-caption">Osazené PCB</p>
-                        </div>
-                        <div class="image-item">
-                            <!-- Video thumbnail: use existing poster tinker.png and video_parking.mp4 -->
-                            <img src="../images/tinker.png" alt="Demo video" class="gallery-image" onclick="openMediaModal(this.dataset.video, this.alt, 'video')" data-video="../images/video_parking.mp4">
-                            <p class="image-caption">Krátké demo (video)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- (Removed the original grid gallery; use the sliding gallery below with navigation arrows) -->
                 <!-- Project gallery (sliding bar) -->
                 <div class="content-section">
                     <h2>Galerie projektu</h2>
                     <div class="sliding-window" id="projectSlidingWindow">
+                        <!-- nav buttons -->
+                        <button class="slide-nav prev" id="slidePrev" aria-label="Předchozí">‹</button>
+                        <button class="slide-nav next" id="slideNext" aria-label="Další">›</button>
                         <div class="sliding-track" id="projectSlidingTrack">
                             <div class="slide">
                                 <img src="../images/tinker.png" alt="Zapojení na breadboardu" onclick="openMediaModal(this.src, this.alt, 'image')">
@@ -330,6 +313,8 @@
         (function() {
             const track = document.getElementById('projectSlidingTrack');
             const windowEl = document.getElementById('projectSlidingWindow');
+            const prevBtn = document.getElementById('slidePrev');
+            const nextBtn = document.getElementById('slideNext');
             if (!track || !windowEl) return;
 
             // capture original slides, then duplicate for seamless looping
@@ -357,15 +342,33 @@
                 track.style.transform = `translateX(${-index * step}px)`;
             }
 
-            function next() {
-                currentIndex++;
-                goTo(currentIndex, true);
+            function handleBoundaryForward() {
                 if (currentIndex >= originalCount) {
-                    // after transition completes, jump back to start without animation
                     setTimeout(() => {
                         currentIndex = 0;
                         goTo(currentIndex, false);
                     }, transitionMs + 20);
+                }
+            }
+
+            function next() {
+                currentIndex++;
+                goTo(currentIndex, true);
+                handleBoundaryForward();
+            }
+
+            function prev() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    goTo(currentIndex, true);
+                } else {
+                    // jump to duplicate zone (instant), then animate to last original
+                    goTo(originalCount, false);
+                    // small timeout to ensure the jump is applied before animating backward
+                    setTimeout(() => {
+                        currentIndex = originalCount - 1;
+                        goTo(currentIndex, true);
+                    }, 30);
                 }
             }
 
@@ -386,6 +389,17 @@
             windowEl.addEventListener('mouseleave', startAutoplay);
             windowEl.addEventListener('touchstart', stopAutoplay, {passive:true});
             windowEl.addEventListener('touchend', startAutoplay);
+
+            // buttons
+            if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoplay(); prev(); startAutoplay(); });
+            if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoplay(); next(); startAutoplay(); });
+
+            // keyboard navigation (left/right)
+            windowEl.tabIndex = 0;
+            windowEl.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') { stopAutoplay(); prev(); startAutoplay(); }
+                if (e.key === 'ArrowRight') { stopAutoplay(); next(); startAutoplay(); }
+            });
 
             // handle resize: recalc and reposition
             window.addEventListener('resize', () => {

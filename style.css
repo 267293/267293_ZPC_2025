@@ -1035,6 +1035,7 @@ body.light-mode .image-content .project-image:hover {
     background-color: rgba(255,255,255,0.02);
     border: 1px solid rgba(255,255,255,0.04);
     padding: 10px 0;
+    position: relative; /* for nav buttons */
 }
 .sliding-track {
     display: flex;
@@ -1060,6 +1061,33 @@ body.light-mode .image-content .project-image:hover {
     margin-top: 8px;
     font-size: 0.9rem;
     opacity: 0.85;
+}
+
+/* Slide navigation arrows */
+.slide-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 30;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.slide-nav:hover { background-color: rgba(0,0,0,0.65); transform: translateY(-50%) scale(1.05); }
+.slide-nav.prev { left: 8px; }
+.slide-nav.next { right: 8px; }
+
+@media (max-width: 600px) {
+    .slide-nav { width: 34px; height: 34px; font-size: 1.1rem; }
 }
 
 /* Pause on hover hint */
