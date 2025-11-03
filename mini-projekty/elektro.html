@@ -71,6 +71,30 @@
 
         <!-- Main content -->
         <main class="page-content">
+            <!-- Project gallery (sliding bar) placed at top -->
+            <div class="content-section">
+                <h2>Galerie projektu</h2>
+                <div class="sliding-window" id="projectSlidingWindow">
+                    <!-- nav buttons -->
+                    <button class="slide-nav prev" id="slidePrev" aria-label="Předchozí">‹</button>
+                    <button class="slide-nav next" id="slideNext" aria-label="Další">›</button>
+                    <div class="sliding-track" id="projectSlidingTrack">
+                        <div class="slide">
+                            <img src="../images/tinker.png" alt="Zapojení na breadboardu" onclick="openMediaModal(this.src, this.alt, 'image')">
+                            <p class="image-caption">Zapojení na breadboardu</p>
+                        </div>
+                        <div class="slide">
+                            <img src="../images/elektro.PNG" alt="Zapojení v praxi" onclick="openMediaModal(this.src, this.alt, 'image')">
+                            <p class="image-caption">Osazené PCB</p>
+                        </div>
+                        <!-- video slide (thumbnail + modal video) -->
+                        <div class="slide">
+                            <img src="../images/video_náhled.png" alt="Demo video parkování" data-video="../images/video_parking.mp4" onclick="openMediaModal(this.dataset.video, this.alt, 'video')">
+                            <p class="image-caption">Krátké demo (video)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Project overview -->
             <div class="project-header">
                 <div class="project-meta">
@@ -152,32 +176,7 @@
                 </div>
             </div>
 
-            <!-- (Removed the original grid gallery; use the sliding gallery below with navigation arrows) -->
-                <!-- Project gallery (sliding bar) -->
-                <div class="content-section">
-                    <h2>Galerie projektu</h2>
-                    <div class="sliding-window" id="projectSlidingWindow">
-                        <!-- nav buttons -->
-                        <button class="slide-nav prev" id="slidePrev" aria-label="Předchozí">‹</button>
-                        <button class="slide-nav next" id="slideNext" aria-label="Další">›</button>
-                        <div class="sliding-track" id="projectSlidingTrack">
-                            <div class="slide">
-                                <img src="../images/tinker.png" alt="Zapojení na breadboardu" onclick="openMediaModal(this.src, this.alt, 'image')">
-                                <p class="image-caption">Zapojení na breadboardu</p>
-                            </div>
-                            <div class="slide">
-                                <img src="../images/elektro.PNG" alt="Zapojení v praxi" onclick="openMediaModal(this.src, this.alt, 'image')">
-                                <p class="image-caption">Osazené PCB</p>
-                            </div>
-                            <!-- video slide (thumbnail + modal video) -->
-                            <div class="slide">
-                                <img src="../images/video_náhled.png" alt="Demo video parkování" data-video="../images/video_parking.mp4" onclick="openMediaModal(this.dataset.video, this.alt, 'video')">
-                                <p class="image-caption">Krátké demo (video)</p>
-                            </div>
-                            <!-- You can add more elektro-related photos here (keep only images that belong to this project) -->
-                        </div>
-                    </div>
-                </div>
+            <!-- gallery moved to top of page to appear first -->
 
             <!-- Image Modal -->
             <div class="image-modal" id="imageModal" onclick="closeImageModal(event)">
