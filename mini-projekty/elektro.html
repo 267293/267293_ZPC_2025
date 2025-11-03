@@ -326,41 +326,76 @@
             }
         });
 
-        // Sliding gallery auto-scroll for project gallery
+        // Sliding gallery: step-by-step autoplay (show one slide, pause, then quickly transition)
         (function() {
             const track = document.getElementById('projectSlidingTrack');
             const windowEl = document.getElementById('projectSlidingWindow');
             if (!track || !windowEl) return;
 
-            // duplicate slides to create seamless loop
-            const slides = Array.from(track.children);
-            slides.forEach(s => track.appendChild(s.cloneNode(true)));
+            // capture original slides, then duplicate for seamless looping
+            const originalSlides = Array.from(track.children);
+            const originalCount = originalSlides.length;
+            originalSlides.forEach(s => track.appendChild(s.cloneNode(true)));
 
-            let pos = 0;
-            const speed = 0.6; // px per frame (adjust to taste)
-            let rafId = null;
-            let paused = false;
+            let currentIndex = 0;
+            let autoplayTimer = null;
+            const displayMs = 2500; // how long each slide stays visible
+            const transitionMs = 600; // how long the slide transition takes
 
-            function step() {
-                if (!paused) {
-                    pos -= speed;
-                    const halfWidth = track.scrollWidth / 2;
-                    if (Math.abs(pos) >= halfWidth) pos = 0;
-                    track.style.transform = `translateX(${pos}px)`;
-                }
-                rafId = requestAnimationFrame(step);
+            function getStepWidth() {
+                const first = track.querySelector('.slide');
+                if (!first) return 220;
+                const style = getComputedStyle(track);
+                const gap = parseFloat(style.gap) || parseFloat(style.columnGap) || 18;
+                return first.getBoundingClientRect().width + gap;
             }
 
-            // pause on hover
-            windowEl.addEventListener('mouseenter', () => paused = true);
-            windowEl.addEventListener('mouseleave', () => paused = false);
+            function goTo(index, animate = true) {
+                const step = getStepWidth();
+                if (animate) track.style.transition = `transform ${transitionMs}ms ease`;
+                else track.style.transition = 'none';
+                track.style.transform = `translateX(${-index * step}px)`;
+            }
 
-            // touch to pause on mobile while touching
-            windowEl.addEventListener('touchstart', () => paused = true, {passive:true});
-            windowEl.addEventListener('touchend', () => paused = false);
+            function next() {
+                currentIndex++;
+                goTo(currentIndex, true);
+                if (currentIndex >= originalCount) {
+                    // after transition completes, jump back to start without animation
+                    setTimeout(() => {
+                        currentIndex = 0;
+                        goTo(currentIndex, false);
+                    }, transitionMs + 20);
+                }
+            }
 
-            // start
-            rafId = requestAnimationFrame(step);
+            function startAutoplay() {
+                stopAutoplay();
+                autoplayTimer = setInterval(next, displayMs + transitionMs);
+            }
+
+            function stopAutoplay() {
+                if (autoplayTimer) {
+                    clearInterval(autoplayTimer);
+                    autoplayTimer = null;
+                }
+            }
+
+            // pause on hover / touch
+            windowEl.addEventListener('mouseenter', stopAutoplay);
+            windowEl.addEventListener('mouseleave', startAutoplay);
+            windowEl.addEventListener('touchstart', stopAutoplay, {passive:true});
+            windowEl.addEventListener('touchend', startAutoplay);
+
+            // handle resize: recalc and reposition
+            window.addEventListener('resize', () => {
+                goTo(currentIndex, false);
+            });
+
+            // initialize
+            goTo(0, false);
+            // small timeout then start so layout stabilizes
+            setTimeout(startAutoplay, 300);
         })();
     </script>
 </body>
