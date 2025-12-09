@@ -61,11 +61,6 @@
             </button>
         </header>
 
-        <!-- Quick info button for modal text -->
-        <div style="margin:8px 0 0 0;">
-            <button class="info-btn" onclick="openTextModal()">Zobrazit doplňující informace</button>
-        </div>
-
         <!-- Navigation back -->
         <nav class="breadcrumb">
             <a href="../mini-projekty.html" class="back-link">
@@ -137,14 +132,99 @@
                 </ul>
             </div>
 
-            <!-- Code image cell: placed under project description -->
-            <div class="content-section code-image-section">
-                <h2>Ukázka kódu</h2>
-                <div style="text-align:center; margin-top:8px;">
-                    <img src="../images/tisk_model.png" alt="Foto kódu" class="project-image" style="max-width:720px;cursor:pointer;" onclick="openCodeModal('../images/tisk_model.png','Fotka kódu')">
-                    <p class="image-caption">Fotka kódu (klikněte pro zvětšení)</p>
-                </div>
-            </div>
+                        <!-- Code example cell: placed under project description -->
+                        <div class="content-section text-image-layout">
+                                <div class="text-content">
+                                        <h2>Kód parkovacího senzoru</h2>
+                                        <pre class="code-block" tabindex="0" style="background:#0f0f10;color:#e6e6e6;padding:16px;border-radius:8px;overflow:auto;font-family:Consolas,'Courier New',monospace;font-size:14px;line-height:1.45;max-height:480px;">
+// --- Prahové hodnoty vzdálenosti (v cm) ---
+const int BLINK_DISTANCE = 15;
+const int LED_5_DISTANCE = 25;
+const int LED_4_DISTANCE = 35;
+const int LED_3_DISTANCE = 45;
+const int LED_2_DISTANCE = 55;
+const int LED_1_DISTANCE = 65;
+
+// --- Proměnné pro blikání ---
+const long BLINK_INTERVAL = 300;
+unsigned long previousBlinkMillis = 0;
+bool ledState = LOW;
+
+void setup() {
+    pinMode(TRIG_PIN, OUTPUT);
+    pinMode(ECHO_PIN, INPUT);
+
+    for (int i = 0; i < 5; i++) {
+        pinMode(ledPins[i], OUTPUT);
+    }
+
+    Serial.begin(9600);
+}
+
+void loop() {
+    long distance = getDistance();
+
+    Serial.print("Vzdalenost: ");
+    Serial.print(distance);
+    Serial.println(" cm");
+
+    if (distance <= BLINK_DISTANCE && distance > 0) {
+        unsigned long currentMillis = millis();
+
+        if (currentMillis - previousBlinkMillis >= BLINK_INTERVAL) {
+            previousBlinkMillis = currentMillis;
+            ledState = !ledState;
+
+            for (int i = 0; i < 5; i++) {
+                digitalWrite(ledPins[i], ledState);
+            }
+        }
+    } else {
+        if (distance <= LED_5_DISTANCE && distance > 0) {
+            setLeds(5);
+        } else if (distance <= LED_4_DISTANCE) {
+            setLeds(4);
+        } else if (distance <= LED_3_DISTANCE) {
+            setLeds(3);
+        } else if (distance <= LED_2_DISTANCE) {
+            setLeds(2);
+        } else if (distance <= LED_1_DISTANCE) {
+            setLeds(1);
+        } else {
+            setLeds(0);
+        }
+    }
+
+    delay(50);
+}
+
+void setLeds(int numToLight) {
+    for (int i = 0; i < 5; i++) {
+        digitalWrite(ledPins[i], LOW);
+    }
+
+    for (int i = 0; i < numToLight; i++) {
+        int ledIndexToLight = ledOrder[i];
+        digitalWrite(ledPins[ledIndexToLight], HIGH);
+    }
+}
+
+long getDistance() {
+    long duration, distance;
+
+    digitalWrite(TRIG_PIN, LOW);
+    delayMicroseconds(2);
+    digitalWrite(TRIG_PIN, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(TRIG_PIN, LOW);
+
+    duration = pulseIn(ECHO_PIN, HIGH);
+    distance = (duration * 0.0343) / 2;
+
+    return distance;
+}
+                                        </pre>
+                                </div>
 
             <!-- Process steps -->
             <div class="content-section">
