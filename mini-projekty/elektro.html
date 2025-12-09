@@ -61,6 +61,11 @@
             </button>
         </header>
 
+        <!-- Quick info button for modal text -->
+        <div style="margin:8px 0 0 0;">
+            <button class="info-btn" onclick="openTextModal()">Zobrazit doplňující informace</button>
+        </div>
+
         <!-- Navigation back -->
         <nav class="breadcrumb">
             <a href="../mini-projekty.html" class="back-link">
@@ -178,6 +183,23 @@
                 <div class="modal-caption" id="modalCaption"></div>
             </div>
 
+            <!-- Text Modal (new) -->
+            <div class="image-modal" id="textModal" onclick="closeTextModal(event)">
+                <span class="modal-close" onclick="closeTextModal()">&times;</span>
+                <div class="modal-content" style="display:block; max-width:90%; max-height:80vh; overflow:auto; padding:20px; background:#fff; border-radius:6px;">
+                    <h3>Dodatečné informace k projektu</h3>
+                    <p>
+                        Zde můžete vložit libovolný text týkající se zapojení, poznámek k návrhu,
+                        doporučení pro použití nebo krátký návod. Toto okno slouží pro doplňující
+                        poznámky, které nechcete umisťovat přímo do hlavního textu stránky.
+                    </p>
+                    <p>
+                        Příklad: Kontrola napájení — vždy zkontrolujte polaritu, používejte ochranné
+                        rezistory na LED a vhodné tranzistory či MOSFETy pro řízení zátěže.
+                    </p>
+                </div>
+            </div>
+
             <!-- Results and files -->
             <div class="content-section">
                 <h2>Výsledky a soubory</h2>
@@ -273,6 +295,23 @@
                 closeImageModal();
             }
         });
+
+        // Text modal open/close
+        function openTextModal() {
+            const modal = document.getElementById('textModal');
+            if (!modal) return;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTextModal(event) {
+            const modal = document.getElementById('textModal');
+            if (!modal) return;
+            if (event === undefined || event.target === modal || event.target.classList.contains('modal-close')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
 
         // Mobile dropdown toggle
         document.addEventListener('DOMContentLoaded', function() {
