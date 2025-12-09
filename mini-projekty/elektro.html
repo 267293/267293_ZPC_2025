@@ -197,6 +197,18 @@
                         Příklad: Kontrola napájení — vždy zkontrolujte polaritu, používejte ochranné
                         rezistory na LED a vhodné tranzistory či MOSFETy pro řízení zátěže.
                     </p>
+                    <div style="margin-top:12px; text-align:center;">
+                        <button class="info-btn" onclick="openCodeModal('../images/tisk_model.png','Fotka kódu')">Zobrazit foto kódu</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Image Modal -->
+            <div class="image-modal" id="codeModal" onclick="closeCodeModal(event)">
+                <span class="modal-close" onclick="closeCodeModal()">&times;</span>
+                <div style="display:block; max-width:90%; max-height:80vh; overflow:auto; padding:10px; background:transparent; border-radius:6px; text-align:center;">
+                    <img id="codeModalImage" src="../images/tisk_model.png" alt="Foto kódu" style="max-width:100%; height:auto; border-radius:6px; box-shadow:0 6px 18px rgba(0,0,0,0.4);">
+                    <div class="modal-caption" id="codeModalCaption" style="margin-top:8px; color:#ddd;"></div>
                 </div>
             </div>
 
@@ -309,6 +321,34 @@
             if (!modal) return;
             if (event === undefined || event.target === modal || event.target.classList.contains('modal-close')) {
                 modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Code image modal open/close
+        function openCodeModal(src, alt) {
+            // close text modal if open
+            const textModal = document.getElementById('textModal');
+            if (textModal && textModal.classList.contains('active')) textModal.classList.remove('active');
+
+            const modal = document.getElementById('codeModal');
+            const img = document.getElementById('codeModalImage');
+            const caption = document.getElementById('codeModalCaption');
+            if (!modal || !img) return;
+            img.src = src;
+            img.alt = alt || '';
+            if (caption) caption.textContent = alt || '';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCodeModal(event) {
+            const modal = document.getElementById('codeModal');
+            const img = document.getElementById('codeModalImage');
+            if (!modal) return;
+            if (event === undefined || event.target === modal || event.target.classList.contains('modal-close')) {
+                modal.classList.remove('active');
+                if (img) img.src = '';
                 document.body.style.overflow = 'auto';
             }
         }
