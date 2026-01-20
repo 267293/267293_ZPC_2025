@@ -1828,3 +1828,198 @@ body.light-mode .dot.active {
         font-size: 30px;
     }
 }
+
+/* Code Preview Styles */
+.code-preview {
+    position: relative;
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-height: 250px;
+}
+
+.code-preview:hover {
+    border-color: rgba(76, 175, 80, 0.3);
+    background: rgba(30, 30, 30, 1);
+}
+
+body.light-mode .code-preview {
+    background: rgba(245, 245, 245, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .code-preview:hover {
+    background: rgba(245, 245, 245, 1);
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+.code-preview pre {
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.code-preview code {
+    color: #4CAF50;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body.light-mode .code-preview code {
+    color: #2E7D32;
+}
+
+.code-preview-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(30, 30, 30, 0), rgba(30, 30, 30, 0.95));
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+body.light-mode .code-preview-overlay {
+    background: linear-gradient(to bottom, rgba(245, 245, 245, 0), rgba(245, 245, 245, 0.95));
+}
+
+.code-preview-hint {
+    color: #4CAF50;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Code Modal */
+.code-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.code-modal-content {
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 900px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .code-modal-content {
+    background: rgba(245, 245, 245, 0.95);
+}
+
+.code-modal-content h3 {
+    padding: 20px;
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+body.light-mode .code-modal-content h3 {
+    color: #333;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.code-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 2001;
+    transition: transform 0.2s ease;
+}
+
+.code-modal-close:hover {
+    transform: scale(1.2);
+}
+
+body.light-mode .code-modal-close {
+    color: #333;
+}
+
+.code-modal-body {
+    overflow-y: auto;
+    flex: 1;
+    padding: 20px;
+}
+
+.code-modal-body pre {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.code-modal-body code {
+    color: #4CAF50;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body.light-mode .code-modal-body code {
+    color: #2E7D32;
+}
+
+/* Scrollbar styling */
+.code-preview::-webkit-scrollbar,
+.code-modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.code-preview::-webkit-scrollbar-track,
+.code-modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.code-preview::-webkit-scrollbar-thumb,
+.code-modal-body::-webkit-scrollbar-thumb {
+    background: rgba(76, 175, 80, 0.5);
+    border-radius: 4px;
+}
+
+.code-preview::-webkit-scrollbar-thumb:hover,
+.code-modal-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(76, 175, 80, 0.7);
+}
+
+body.light-mode .code-preview::-webkit-scrollbar-track,
+body.light-mode .code-modal-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+    .code-modal-content {
+        max-width: 95%;
+        max-height: 70vh;
+    }
+    
+    .code-modal-body {
+        font-size: 0.8rem;
+    }
+    
+    .code-preview {
+        max-height: 200px;
+    }
+}

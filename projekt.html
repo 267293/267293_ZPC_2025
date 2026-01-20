@@ -92,25 +92,35 @@
                             <!-- Fotka 1 - stroj -->
                             <div class="slide" onclick="openModal(1)">
                                 <div class="media-container">
-                                    <img src="images/stroj.jpg" alt="Desinfekční box">
+                                    <img src="images/stroj.jpg" alt="první skica">
                                 </div>
-                                <p class="slide-caption">Desinfekční box</p>
+                                <p class="slide-caption">první  skica </p>
+                                
                             </div>
                             
                             <!-- Fotka 2 - 3d model -->
                             <div class="slide" onclick="openModal(2)">
                                 <div class="media-container">
-                                    <img src="images/3d_1.JPEG" alt="3D model">
+                                    <img src="images/render1_projekt.jpg" alt="3D model">
                                 </div>
                                 <p class="slide-caption">3D model</p>
                             </div>
-                            
+
+                            <!-- Fotka 2 - 3d model -->
+                            <div class="slide" onclick="openModal(2)">
+                                <div class="media-container">
+                                    <img src="images/render3_projekt.jpg" alt="3D model">
+                                </div>
+                                <p class="slide-caption">3D model</p>
+                            </div>
+
+                        
                             <!-- Fotka 3 - tinker -->
                             <div class="slide" onclick="openModal(3)">
                                 <div class="media-container">
-                                    <img src="images/tinker.png" alt="Tinkercad návrh">
+                                    <img src="images/zapojení_projekt.jpg" alt="Návrh zapojení">
                                 </div>
-                                <p class="slide-caption">Tinkercad návrh</p>
+                                <p class="slide-caption">Návrh zapojení</p>
                             </div>
                         </div>
                     </div>
@@ -165,6 +175,47 @@
                     <li>Servo motor</li>
                     <li>UVC LED</li>
                 </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Arduino kód</h2>
+                <div class="code-preview" onclick="openCodeModal('arduinoCode')">
+                    <pre id="arduinoCode"><code>#include &lt;Servo.h&gt;
+#include &lt;LiquidCrystal_I2C.h&gt;
+
+Servo doorServo;
+const int MOTION_SENSOR = 2;
+const int LED_PIN = 3;
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(MOTION_SENSOR, INPUT);
+  pinMode(LED_PIN, OUTPUT);
+  
+  doorServo.attach(9);
+  doorServo.write(0);
+  
+  lcd.init();
+  lcd.backlight();
+  lcd.print("System ready");
+}</code></pre>
+                    <div class="code-preview-overlay">
+                        <span class="code-preview-hint">Klikni pro rozšíření</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Modal -->
+            <div id="codeModal" class="code-modal" onclick="closeCodeModal(event)">
+                <div class="code-modal-content" onclick="event.stopPropagation()">
+                    <button class="code-modal-close" onclick="closeCodeModal()">&times;</button>
+                    <h3 id="codeModalTitle">Arduino kód</h3>
+                    <div class="code-modal-body">
+                        <pre id="codeModalCode"><code></code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="content-section"> 
@@ -329,6 +380,39 @@
                     changeModalSlide(-1);
                 } else if (e.key === 'ArrowRight') {
                     changeModalSlide(1);
+                }
+            }
+        });
+
+        // Code Modal functionality
+        function openCodeModal(codeId) {
+            const codeElement = document.getElementById(codeId);
+            const codeContent = codeElement.textContent;
+            const codeModal = document.getElementById('codeModal');
+            const codeModalCode = document.querySelector('#codeModalCode code');
+            
+            codeModalCode.textContent = codeContent;
+            codeModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCodeModal(event) {
+            // If event exists and is not a click on the modal background, don't close
+            if (event && event.target !== event.currentTarget) {
+                return;
+            }
+            
+            const codeModal = document.getElementById('codeModal');
+            codeModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close code modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const codeModal = document.getElementById('codeModal');
+                if (codeModal && codeModal.style.display === 'flex') {
+                    closeCodeModal();
                 }
             }
         });
