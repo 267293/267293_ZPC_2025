@@ -1570,3 +1570,261 @@ body.light-mode .download-link:hover {
         padding: 8px 16px;
     }
 }
+
+/* Media Gallery Slider */
+.media-gallery-slider {
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 100%;
+}
+
+.slider-wrapper {
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.slider-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.4s ease-in-out;
+}
+
+.slide {
+    min-width: calc(33.333% - 14px);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.slide:hover {
+    transform: scale(1.05);
+}
+
+.slide .media-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .slide .media-container {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.slide .media-container img,
+.slide .media-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+.slide-caption {
+    margin-top: 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+body.light-mode .slide-caption {
+    color: #333;
+}
+
+.slider-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+body.light-mode .slider-btn {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #333;
+}
+
+body.light-mode .slider-btn:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #4CAF50;
+    transform: scale(1.2);
+}
+
+body.light-mode .dot {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .dot.active {
+    background: #4CAF50;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 100%;
+}
+
+.modal-content video,
+.modal-content img {
+    border-radius: 8px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal-caption {
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2001;
+    transition: transform 0.2s ease;
+}
+
+.modal-close:hover {
+    transform: scale(1.2);
+}
+
+.modal-nav {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    margin: 0 20px;
+}
+
+.modal-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .slide {
+        min-width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .slide {
+        min-width: 100%;
+    }
+    
+    .slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    
+    .slide .media-container {
+        height: 200px;
+    }
+    
+    .modal-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        margin: 0 10px;
+    }
+    
+    .modal-close {
+        top: 15px;
+        right: 20px;
+        font-size: 30px;
+    }
+}

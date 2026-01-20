@@ -71,12 +71,70 @@
 
         <!-- Main content -->
         <main class="page-content">
-            <!-- Hlavní obrázek projektu -->
-            <div class="hero-image-section">
-                <div class="image-container">
-                    <img src="images/stroj.jpg" alt="Desinfekční box - hlavní návrh" class="project-image hero-image">
-                    <p class="image-caption">Desinfekční box pro elektronická zařízení</p>
+            <!-- Media Gallery Slider -->
+            <div class="media-gallery-slider">
+                <div class="slider-container">
+                    <button class="slider-btn prev" onclick="moveSlide(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="slider-wrapper">
+                        <div class="slider-track" id="sliderTrack">
+                            <!-- Video 1 -->
+                            <div class="slide" onclick="openModal(0)">
+                                <div class="media-container">
+                                    <video src="images/projekt_video.mp4" muted></video>
+                                    <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                                </div>
+                                <p class="slide-caption">Video projektu</p>
+                            </div>
+                            
+                            <!-- Fotka 1 - stroj -->
+                            <div class="slide" onclick="openModal(1)">
+                                <div class="media-container">
+                                    <img src="images/stroj.jpg" alt="Desinfekční box">
+                                </div>
+                                <p class="slide-caption">Desinfekční box</p>
+                            </div>
+                            
+                            <!-- Fotka 2 - 3d model -->
+                            <div class="slide" onclick="openModal(2)">
+                                <div class="media-container">
+                                    <img src="images/3d_1.JPEG" alt="3D model">
+                                </div>
+                                <p class="slide-caption">3D model</p>
+                            </div>
+                            
+                            <!-- Fotka 3 - tinker -->
+                            <div class="slide" onclick="openModal(3)">
+                                <div class="media-container">
+                                    <img src="images/tinker.png" alt="Tinkercad návrh">
+                                </div>
+                                <p class="slide-caption">Tinkercad návrh</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="slider-btn next" onclick="moveSlide(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
+                
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+
+            <!-- Modal for fullscreen view -->
+            <div id="mediaModal" class="modal" onclick="closeModal()">
+                <span class="modal-close">&times;</span>
+                <button class="modal-nav prev" onclick="event.stopPropagation(); changeModalSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="modal-content-wrapper">
+                    <div class="modal-content" id="modalContent"></div>
+                </div>
+                <button class="modal-nav next" onclick="event.stopPropagation(); changeModalSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
 
             <div class="content-section">
@@ -94,10 +152,18 @@
                 <h2>Plánované technologie</h2>
                 <ul class="tech-list">
                     <li>3D modelování a tisk</li>
-                    <li>Laserové řezání</li>
-                    
                     <li>Programování mikrokontrolérů</li>
                     <li>Senzory a aktuátory</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Použitá elektronika</h2>
+                <ul class="tech-list">
+                    <li>LCD displey</li>
+                    <li>Ultrazvukový senzor</li>
+                    <li>Servo motor</li>
+                    <li>UVC LED</li>
                 </ul>
             </div>
 
@@ -123,29 +189,7 @@
                 </div>
             </div>
 
-            <div class="content-section">
-                <h2>Průběh práce</h2>
-                <p>
-                    Tuto sekci budu průběžně aktualizovat s fotografiami, 
-                    popisem postupu a výsledky jednotlivých fází projektu.
-                </p>
-                
-                <div class="project-gallery">
-                    <!-- Nahraďte 'obrazek.jpg' skutečným názvem vašeho obrázku -->
-                    <div class="image-container">
-                        <img src="images/stroj.jpg" alt="Desinfekční box - návrh" class="project-image">
-                        <p class="image-caption">Návrh desinfekčního boxu pro elektronická zařízení</p>
-                    </div>
-                    
-                    <!-- Můžete přidat více obrázků -->
-                    <!-- 
-                    <div class="image-container">
-                        <img src="images/dalsi-obrazek.jpg" alt="Popis obrázku" class="project-image">
-                        <p class="image-caption">Popis dalšího obrázku</p>
-                    </div>
-                    -->
-                </div>
-            </div>
+            
         </main>
     </div>
 
@@ -172,6 +216,120 @@
                         dropdown.classList.toggle('active');
                     }
                 });
+            }
+            
+            // Initialize slider dots
+            initSliderDots();
+        });
+
+        // Media Gallery Slider
+        let currentSlide = 0;
+        const mediaItems = [
+            { type: 'video', src: 'images/projekt_video.mp4', caption: 'Video projektu' },
+            { type: 'image', src: 'images/stroj.jpg', caption: 'Desinfekční box' },
+            { type: 'image', src: 'images/3d_1.JPEG', caption: '3D model' },
+            { type: 'image', src: 'images/tinker.png', caption: 'Tinkercad návrh' }
+        ];
+
+        function initSliderDots() {
+            const dotsContainer = document.getElementById('sliderDots');
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < mediaItems.length; i++) {
+                const dot = document.createElement('span');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function moveSlide(direction) {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            const track = document.getElementById('sliderTrack');
+            const slideWidth = document.querySelector('.slide').offsetWidth;
+            const gap = 20; // CSS gap
+            track.style.transform = `translateX(-${currentSlide * (slideWidth + gap)}px)`;
+            
+            // Update dots
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Modal functionality
+        let currentModalSlide = 0;
+
+        function openModal(index) {
+            currentModalSlide = index;
+            const modal = document.getElementById('mediaModal');
+            modal.style.display = 'flex';
+            updateModalContent();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('mediaModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Stop any playing video
+            const video = modal.querySelector('video');
+            if (video) {
+                video.pause();
+            }
+        }
+
+        function changeModalSlide(direction) {
+            currentModalSlide = (currentModalSlide + direction + mediaItems.length) % mediaItems.length;
+            updateModalContent();
+        }
+
+        function updateModalContent() {
+            const modalContent = document.getElementById('modalContent');
+            const item = mediaItems[currentModalSlide];
+            
+            if (item.type === 'video') {
+                modalContent.innerHTML = `
+                    <video controls autoplay style="max-width: 90%; max-height: 80vh;">
+                        <source src="${item.src}" type="video/mp4">
+                    </video>
+                    <p class="modal-caption">${item.caption}</p>
+                `;
+            } else {
+                modalContent.innerHTML = `
+                    <img src="${item.src}" alt="${item.caption}" style="max-width: 90%; max-height: 80vh;">
+                    <p class="modal-caption">${item.caption}</p>
+                `;
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Keyboard navigation for slider
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('mediaModal');
+            if (modal.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') {
+                    changeModalSlide(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeModalSlide(1);
+                }
             }
         });
     </script>
