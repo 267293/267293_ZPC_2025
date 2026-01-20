@@ -92,31 +92,45 @@
                             <!-- Fotka 1 - stroj -->
                             <div class="slide" onclick="openModal(1)">
                                 <div class="media-container">
-                                    <img src="images/stroj.jpg" alt="první skica">
+                                    <img src="images/stroj.jpg" alt="První skica">
                                 </div>
-                                <p class="slide-caption">první  skica </p>
-                                
+                                <p class="slide-caption">První skica</p>
                             </div>
                             
-                            <!-- Fotka 2 - 3d model -->
+                            <!-- Fotka 2 - render 1 -->
                             <div class="slide" onclick="openModal(2)">
                                 <div class="media-container">
-                                    <img src="images/render1_projekt.jpg" alt="3D model">
+                                    <img src="images/render1_projekt.jpg" alt="3D render 1">
                                 </div>
-                                <p class="slide-caption">3D model</p>
+                                <p class="slide-caption">3D render 1</p>
                             </div>
 
-                            <!-- Fotka 2 - 3d model -->
-                            <div class="slide" onclick="openModal(2)">
-                                <div class="media-container">
-                                    <img src="images/render3_projekt.jpg" alt="3D model">
-                                </div>
-                                <p class="slide-caption">3D model</p>
-                            </div>
-
-                        
-                            <!-- Fotka 3 - tinker -->
+                            <!-- Fotka 3 - render 3 -->
                             <div class="slide" onclick="openModal(3)">
+                                <div class="media-container">
+                                    <img src="images/render3_projekt.jpg" alt="3D render 2">
+                                </div>
+                                <p class="slide-caption">3D render 2</p>
+                            </div>
+
+                            <!-- Fotka 4 - render 2 -->
+                            <div class="slide" onclick="openModal(4)">
+                                <div class="media-container">
+                                    <img src="images/render2_projekt.jpg" alt="3D render 3">
+                                </div>
+                                <p class="slide-caption">3D render 3</p>
+                            </div>
+
+                            <!-- Fotka 5 - render 4 -->
+                            <div class="slide" onclick="openModal(5)">
+                                <div class="media-container">
+                                    <img src="images/render4_projekt.jpg" alt="3D render 4">
+                                </div>
+                                <p class="slide-caption">3D render 4</p>
+                            </div>
+                            
+                            <!-- Fotka 6 - zapojení -->
+                            <div class="slide" onclick="openModal(6)">
                                 <div class="media-container">
                                     <img src="images/zapojení_projekt.jpg" alt="Návrh zapojení">
                                 </div>
@@ -277,9 +291,12 @@ void setup() {
         let currentSlide = 0;
         const mediaItems = [
             { type: 'video', src: 'images/projekt_video.mp4', caption: 'Video projektu' },
-            { type: 'image', src: 'images/stroj.jpg', caption: 'Desinfekční box' },
-            { type: 'image', src: 'images/3d_1.JPEG', caption: '3D model' },
-            { type: 'image', src: 'images/tinker.png', caption: 'Tinkercad návrh' }
+            { type: 'image', src: 'images/stroj.jpg', caption: 'První skica' },
+            { type: 'image', src: 'images/render1_projekt.jpg', caption: '3D render 1' },
+            { type: 'image', src: 'images/render3_projekt.jpg', caption: '3D render 2' },
+            { type: 'image', src: 'images/render2_projekt.jpg', caption: '3D render 3' },
+            { type: 'image', src: 'images/render4_projekt.jpg', caption: '3D render 4' },
+            { type: 'image', src: 'images/zapojení_projekt.jpg', caption: 'Návrh zapojení' }
         ];
 
         function initSliderDots() {
